@@ -1,0 +1,1 @@
+<img src="/assets/img/night.svg" class="w-[60px]" alt="">

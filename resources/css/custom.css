@@ -1,0 +1,7 @@
+.container-catatan-makanan:nth-child(odd) .card-catatan-makanan {
+    border-left: 10px solid #fdced0;
+}
+
+.container-catatan-makanan:nth-child(even) .card-catatan-makanan {
+    border-left: 10px solid #D9F4FF;
+}

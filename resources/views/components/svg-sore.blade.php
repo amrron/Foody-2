@@ -1,0 +1,1 @@
+<img src="/assets/img/evening.svg" class="w-[60px]" alt="">
