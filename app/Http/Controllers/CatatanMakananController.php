@@ -70,7 +70,7 @@ class CatatanMakananController extends Controller
             $new_makanan['lemak'] = isset($generated_makanan->lemak) ? floatval($generated_makanan->lemak) : 0;
             $new_makanan['deskripsi'] = isset($generated_makanan->karbohidrat) ? $generated_makanan->deskripsi : "Deskripsi tidak tersedia";
             $new_makanan['slug'] = Str::slug($new_makanan['nama']);
-            $new_makanan['gambar'] = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Ffd%2F80%2Fec%2Ffd80ecec48eba2a9adb76e4133905879.png";
+            $new_makanan['gambar'] = "https://source.unsplash.com/400x400?" . $validatedData['nama'];
             $makanan = Makanan::create($new_makanan);
         }
 

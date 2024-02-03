@@ -49,30 +49,32 @@ $(document).ready(function(){
         var deleteUrl = $(this).attr('href');
         var itemToDelete = $(this).closest('.container-catatan-makanan');
 
-        $.ajax({
-            type: 'DELETE',
-            url: deleteUrl,
-            data: {
-                _token : csrf_token
-            },
-            success: function(data){
-                console.log('berhasil menghapus catatan makanan');
-
-                $('#toast-success').removeClass('hidden');
-                $('#toast-success .message').text('Catatan berhasil dihapus.');
-                setTimeout(function() {
-                    $('#toast-success').addClass('hidden');
-                }, 3000);
-
-                itemToDelete.remove();
-            },
-            error: function (error) {
-                console.error(error);
-                $('#toast-danger .message').text('Catatan gagal dihapus.');
-                setTimeout(function() {
-                    $('#toast-danger').addClass('hidden');
-                }, 3000);
-            }
+        $('#confirm-hapus').click(function(){
+            $.ajax({
+                type: 'DELETE',
+                url: deleteUrl,
+                data: {
+                    _token : csrf_token
+                },
+                success: function(data){
+                    console.log('berhasil menghapus catatan makanan');
+    
+                    $('#toast-success').removeClass('hidden');
+                    $('#toast-success .message').text('Catatan berhasil dihapus.');
+                    setTimeout(function() {
+                        $('#toast-success').addClass('hidden');
+                    }, 3000);
+    
+                    itemToDelete.remove();
+                },
+                error: function (error) {
+                    console.error(error);
+                    $('#toast-danger .message').text('Catatan gagal dihapus.');
+                    setTimeout(function() {
+                        $('#toast-danger').addClass('hidden');
+                    }, 3000);
+                }
+            });
         });
     });
 
@@ -82,31 +84,33 @@ $(document).ready(function(){
         var deleteUrl = $(this).attr('href');
         var itemToDelete = $(this).closest('.container-bmi');
 
-        $.ajax({
-            type: 'DELETE',
-            url: deleteUrl,
-            data: {
-                _token : csrf_token
-            },
-            success: function(data){
-                console.log('berhasil menghapus BMI');
+        $('#confirm-hapus').click(function(){
+            $.ajax({
+                type: 'DELETE',
+                url: deleteUrl,
+                data: {
+                    _token : csrf_token
+                },
+                success: function(data){
+                    console.log('berhasil menghapus BMI');
 
-                $('#toast-success').removeClass('hidden');
-                $('#toast-success .message').text('BMI berhasil dihapus.');
-                setTimeout(function() {
-                    $('#toast-success').addClass('hidden');
-                }, 3000);
+                    $('#toast-success').removeClass('hidden');
+                    $('#toast-success .message').text('BMI berhasil dihapus.');
+                    setTimeout(function() {
+                        $('#toast-success').addClass('hidden');
+                    }, 3000);
 
-                itemToDelete.remove();
-            },
-            error: function (error) {
-                console.error(error);
-                $('#toast-danger').removeClass('hidden');
-                $('#toast-danger .message').text('BMI gagal dihapus. ' + error.responseJSON.message);
-                setTimeout(function() {
-                    $('#toast-danger').addClass('hidden');
-                }, 3000);
-            }
+                    itemToDelete.remove();
+                },
+                error: function (error) {
+                    console.error(error);
+                    $('#toast-danger').removeClass('hidden');
+                    $('#toast-danger .message').text('BMI gagal dihapus. ' + error.responseJSON.message);
+                    setTimeout(function() {
+                        $('#toast-danger').addClass('hidden');
+                    }, 3000);
+                }
+            });
         });
     });
 
@@ -119,7 +123,54 @@ $(document).ready(function(){
         $('#bmiChart').hide();
         $('#calculator').show();
     })
-    
+
+    $('#tbl-donat').click(function(){
+        $('#open-donat').removeClass('hidden');
+        $('#open-modal').hide();
+    })
+
+    $('#tbl-catatanku').click(function(){
+        $('#open-donat').addClass('hidden');
+        $('#open-modal').show();
+    })
+
+    $('#gambar').change(function(){
+        $('#edit-profile-form').submit();
+    })
+
+    $('#remove-pp').click(function(e) {
+        e.preventDefault();
+
+        var deleteUrl = '/profile/hapus-gambar';
+
+        $.ajax({
+            type: 'PATCH',
+            url: deleteUrl,
+            data: {
+                _token : csrf_token
+            },
+            success: function(data){
+                console.log('berhasil mengubah gambar');
+
+                location.reload();
+            },
+            error: function (error) {
+                console.error(error);
+                $('#toast-danger').removeClass('hidden');
+                $('#toast-danger .message').text('BMI gagal dihapus. ' + error.responseJSON.message);
+                setTimeout(function() {
+                    $('#toast-danger').addClass('hidden');
+                }, 3000);
+            }
+        });
+    });
+
+    $('#form-cari-makanan').submit(function(){
+        setTimeout(function() {
+            $('#muter').addClass('animate-spin');
+            $('#sedang-mencari').removeClass('hidden');
+        }, 2500);
+    })    
 })
 
 // Buat fungsi untuk mengambil data dari Laravel melalui AJAX

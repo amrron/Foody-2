@@ -6,17 +6,17 @@
                 BMI
             </h1>
             <div class="flex justify-center">
-                <button data-tooltip-target="tooltip-calculator" id="tbl-kalkulator" class="h-9 w-9 me-1 flex items-center justify-center w-9 h-9 text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg toggle-full-view hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                <button data-tooltip-target="tooltip-calculator" id="tbl-kalkulator" class="h-9 w-9 me-1 flex items-center justify-center w-9 h-9 text-xs font-medium text-biru bg-white border border-gray-200 rounded-lg toggle-full-view hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-biru dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-biru">
                     <span class="sr-only">Toggle full view</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calculator-fill" viewBox="0 0 16 16">
                         <path class="bg-biru" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm2 .5v2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5m0 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M4.5 9a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 12.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M7.5 6a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM7 9.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM10 6.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5z"/>
                     </svg>
                 </button>
-                <div id="tooltip-calculator" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-biru rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                <div id="tooltip-calculator" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-biru rounded-lg shadow-sm opacity-0 tooltip dark:bg-biru">
                     Kalkulator BMI
                     <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
-                <button data-tooltip-target="tooltip-chart" id="tbl-chart" class="h-9 w-9 ms-1 flex items-center justify-center w-9 h-9 text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg toggle-full-view hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                <button data-tooltip-target="tooltip-chart" id="tbl-chart" class="h-9 w-9 ms-1 flex items-center justify-center w-9 h-9 text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg toggle-full-view hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-biru dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                     <span class="sr-only">Toggle full view</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
                         <path class="bg-biru" d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="flex justify-center items-center h-[300px]">
-                <canvas id="bmiChart" class="max-w-screen-md mx-auto" style="display: none"></canvas>
+                <canvas id="bmiChart" class="max-w-screen-md bg-birumuda p-4 rounded-lg mt-3" style="display: none"></canvas>
                 <form action="/bmi" method="post" id="calculator" class="flex flex-wrap max-w-screen-md mx-auto">
                     @if(session()->has('success'))
                     <div id="alert-3" class="flex items-center p-4 mx-2 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 w-full dark:text-green-400" role="alert" style="z-index: 10; background-color: {{ session('success')['warna'] }}; color: {{ session('success')['warna_tebal'] }}">
@@ -130,7 +130,7 @@
                         <div class="card-body overflow-hidden p-4 relative">
                             <h5 class="card-title text-nowrap text-xl font-medium text-biru mb-3">Nilai BMI : <span style="color: {{ $bmi->kategori['strongColor'] }}">{{ $bmi->nilai }}</span></h5>
                             <p class="opacity-50"></p>
-                            <a href="/bmi/delete/{{ $bmi->id }}" class="delete-bmi text-blue-500" style="position: absolute; right: 20px; bottom: 15px; font-size: 20px">
+                            <a data-modal-target="confirm-modal" data-modal-toggle="confirm-modal" href="/bmi/delete/{{ $bmi->id }}" class="delete-bmi text-blue-500" style="position: absolute; right: 20px; bottom: 15px; font-size: 20px">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#131049" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                     <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"></path>
                                 </svg>
@@ -202,6 +202,32 @@
         <span class="sr-only">Error icon</span>
     </div>
     <div class="ms-3 text-sm font-normal message">Gagal mencatat makanan.</div>
+</div>
+
+<div id="confirm-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] h-full" style="background-color: rgba(17,24,39,.5);}">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="confirm-modal">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+                <span class="sr-only">Close modal</span>
+            </button>
+            <div class="p-4 md:p-5 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mx-auto mb-3  text-biru w-14 h-14 text-merah bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                  </svg>
+                <h2 class="font-bold text-biru text-xl mb-3">Apakah anda yakin?</h2>
+                <h3 class="mb-5 text-sm font-normal text-biru dark:text-gray-400">Data BMI yang telah dihapus tidak dapat dikembalikan</h3>
+                <button data-modal-hide="confirm-modal" type="button" class="text-biru bg-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                    Batal
+                </button>
+                <button data-modal-hide="confirm-modal" type="button" id="confirm-hapus" class="text-white bg-merah hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
+                    Ya, Saya yakin
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>

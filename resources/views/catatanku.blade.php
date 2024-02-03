@@ -5,8 +5,32 @@
             <h1 class="text-biru text-center text-[40px] font-bold">
                 Catatanku
             </h1>
-            <div class="">
-                <swiper-container class="mySwiper p-0 z-0" navigation="true" space-between="20" slides-per-view="auto">
+            <div class="flex justify-center mb-2">
+                <button data-tooltip-target="tooltip-catatanku" id="tbl-catatanku" class="h-9 w-9 me-1 flex items-center justify-center w-9 h-9 text-xs font-medium text-biru bg-white border border-gray-200 rounded-lg toggle-full-view hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-biru dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-biru">
+                    <span class="sr-only">Toggle full view</span>
+                    <svg class="text-biru"  width="16" height="16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M8 7V2.2a2 2 0 0 0-.5.4l-4 3.9a2 2 0 0 0-.3.5H8Zm2 0V2h7a2 2 0 0 1 2 2v.1a5 5 0 0 0-4.7 1.4l-6.7 6.6a3 3 0 0 0-.8 1.6l-.7 3.7a3 3 0 0 0 3.5 3.5l3.7-.7a3 3 0 0 0 1.5-.9l4.2-4.2V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9h5a2 2 0 0 0 2-2Z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M17.4 8a1 1 0 0 1 1.2.3 1 1 0 0 1 0 1.6l-.3.3-1.6-1.5.4-.4.3-.2Zm-2.1 2.1-4.6 4.7-.4 1.9 1.9-.4 4.6-4.7-1.5-1.5ZM17.9 6a3 3 0 0 0-2.2 1L9 13.5a1 1 0 0 0-.2.5L8 17.8a1 1 0 0 0 1.2 1.1l3.7-.7c.2 0 .4-.1.5-.3l6.6-6.6A3 3 0 0 0 18 6Z" clip-rule="evenodd"/>
+                    </svg>                    
+                </button>
+                <div id="tooltip-catatanku" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-biru rounded-lg shadow-sm opacity-0 tooltip dark:bg-biru">
+                    Catat makanan
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <button data-tooltip-target="tooltip-doughnat" id="tbl-donat" class="h-9 w-9 ms-1 flex items-center justify-center w-9 h-9 text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg toggle-full-view hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-biru dark:focus:ring-gray-500 dark:bg-gray-800 focus:outline-none dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                    <span class="sr-only">Toggle full view</span>
+                    <svg class="text-biru"  width="16" height="16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M13.5 2a7 7 0 0 0-.5 0 1 1 0 0 0-1 1v8c0 .6.4 1 1 1h8c.5 0 1-.4 1-1v-.5A8.5 8.5 0 0 0 13.5 2Z"/>
+                        <path d="M11 6a1 1 0 0 0-1-1 8.5 8.5 0 1 0 9 9 1 1 0 0 0-1-1h-7V6Z"/>
+                    </svg>                    
+                </button>
+                <div id="tooltip-doughnat" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-biru rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Grafik
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+            </div>
+            <div class="h-[350px] flex items-center">
+                <swiper-container class="mySwiper p-0 z-0 w-full" id="open-modal" navigation="true" space-between="20" slides-per-view="auto">
                     <swiper-slide class="w-100 md:w-[320px]">
                         <div class="">
                             <div class="py-4 bg-ping mt-3 mb-3 border-0 rounded-lg">
@@ -72,6 +96,60 @@
                         </div>
                     </swiper-slide>
                 </swiper-container>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 p-3 hidden w-full" id="open-donat">
+                    <div class="bg-white rounded-lg p-4 md:p-6"> 
+                        <div class="py-6" id="donut-chart"></div>
+                    </div>
+                    <div class="flex justify-center items-center hidden md:flex">
+                        <div class=" w-full">
+                            <div class="mb-3">
+                                <div class="flex justify-between">
+                                    <h5 class="font-bold text-biru">Karbohidrat</h5>
+                                    <p class="text-biru">{{ auth()->user()->dailyKarbo }}/{{ auth()->user()->batasKarbo }}g</p>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
+                                    <div class="bg-biru text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round(auth()->user()->dailyKarbo / auth()->user()->batasKarbo * 100) }}%"> {{ round(auth()->user()->dailyKarbo / auth()->user()->batasKarbo * 100) }}%</div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="flex justify-between">
+                                    <h5 class="font-bold text-biru">Protein</h5>
+                                    <p class="text-biru">{{ auth()->user()->dailyProtein }}/{{ auth()->user()->batasProtein }}g</p>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
+                                    <div class="bg-birumuda text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round(auth()->user()->dailyProtein / auth()->user()->batasProtein * 100) }}%"> {{ round(auth()->user()->dailyProtein / auth()->user()->batasProtein * 100) }}%</div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="flex justify-between">
+                                    <h5 class="font-bold text-biru">Garam</h5>
+                                    <p class="text-biru">{{ auth()->user()->dailyGaram }}/{{ auth()->user()->batasGaram }}g</p>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
+                                    <div class="bg-ping text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round(auth()->user()->dailyGaram / auth()->user()->batasGaram * 100) }}%"> {{ round(auth()->user()->dailyGaram / auth()->user()->batasGaram * 100) }}%</div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="flex justify-between">
+                                    <h5 class="font-bold text-biru">Gula</h5>
+                                    <p class="text-biru">{{ auth()->user()->dailyGula }}/{{ auth()->user()->batasGula }}g</p>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
+                                    <div class="bg-black text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ auth()->user()->dailyGula / auth()->user()->batasGula * 100 }}%"> {{ auth()->user()->dailyGula / auth()->user()->batasGula * 100 }}%</div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="flex justify-between">
+                                    <h5 class="font-bold text-biru">Lemak</h5>
+                                    <p class="text-biru">{{ auth()->user()->dailyLemak }}/{{ auth()->user()->batasLemak }}g</p>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
+                                    <div class="bg-[#6c6a85] text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round(auth()->user()->dailyLemak / auth()->user()->batasLemak * 100) }}%"> {{ round(auth()->user()->dailyLemak / auth()->user()->batasLemak * 100) }}%</div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         @endif
@@ -127,7 +205,7 @@
                         <div class="card-body overflow-hidden relative">
                             <h5 class="card-title text-xl text-biru font-medium">{{ $catatan->makanan->nama }} x {{ $catatan->jumlah }}</h5>
                             <p class="opacity-50">{{ date('H:i', strtotime($catatan->waktu)) }}</p>
-                            <a href="/catatanku/delete/{{ $catatan->id }}" class="delete-catatan text-blue-500" style="position: absolute; right: 0px; bottom: 0px; font-size: 20px">
+                            <a data-modal-target="confirm-modal" data-modal-toggle="confirm-modal" href="/catatanku/delete/{{ $catatan->id }}" class="delete-catatan text-blue-500" style="position: absolute; right: 0px; bottom: 0px; font-size: 20px">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#131049" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                     <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"></path>
                                 </svg>
@@ -223,7 +301,7 @@
 </x-app-layout>
   
 <!-- Main modal pagi -->
-<div id="modal-pagi" tabindex="-1" aria-hidden="true" class="modal-form hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] h-full" style="background-color: rgba(17,24,39,.5);}">
+<div id="modal-pagi" tabindex="-1" aria-hidden="true" class="modal-form transisi  hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] h-full" style="background-color: rgba(17,24,39,.5);}">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -275,7 +353,7 @@
 </div>   
   
 <!-- Main modal siang -->
-<div id="modal-siang" tabindex="-1" aria-hidden="true" class="modal-form hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] h-full" style="background-color: rgba(17,24,39,.5);}">
+<div id="modal-siang" tabindex="-1" aria-hidden="true" class="modal-form transisi hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] h-full" style="background-color: rgba(17,24,39,.5);}">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -322,7 +400,7 @@
 </div>  
   
 <!-- Main modal sore -->
-<div id="modal-sore" tabindex="-1" aria-hidden="true" class="modal-form hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] h-full" style="background-color: rgba(17,24,39,.5);}">
+<div id="modal-sore" tabindex="-1" aria-hidden="true" class="modal-form transisi hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] h-full" style="background-color: rgba(17,24,39,.5);}">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -368,7 +446,7 @@
 </div>   
   
 <!-- Main modal malam -->
-<div id="modal-malam" tabindex="-1" aria-hidden="true" class="modal-form hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] h-full" style="background-color: rgba(17,24,39,.5);}">
+<div id="modal-malam" tabindex="-1" aria-hidden="true" class="modal-form transisi hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] h-full" style="background-color: rgba(17,24,39,.5);}">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -455,3 +533,125 @@
     </div>
     <div class="ms-3 text-sm font-normal message">Gagal mencatat makanan.</div>
 </div>
+
+<!--- Modal delete Confirm --->
+<div id="confirm-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] h-full" style="background-color: rgba(17,24,39,.5);}">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="confirm-modal">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+                <span class="sr-only">Close modal</span>
+            </button>
+            <div class="p-4 md:p-5 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mx-auto mb-3  text-biru w-14 h-14 text-merah bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                  </svg>
+                <h2 class="font-bold text-biru text-xl mb-3">Apakah anda yakin?</h2>
+                <h3 class="mb-5 text-sm font-normal text-biru dark:text-gray-400">Data catatan yang telah dihapus tidak dapat dikembalikan</h3>
+                <button data-modal-hide="confirm-modal" type="button" class="text-biru bg-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                    Batal
+                </button>
+                <button data-modal-hide="confirm-modal" type="button" id="confirm-hapus" class="text-white bg-merah hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
+                    Ya, Saya yakin
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // ApexCharts options and config
+    window.addEventListener("load", function() {
+      const getChartOptions = () => {
+          return {
+            series: [{{ auth()->user()->dailyKarbo }}, {{ auth()->user()->dailyProtein }}, {{ auth()->user()->DailyGaram }}, {{ auth()->user()->dailyGula }}, {{ auth()->user()->dailyLemak }}],
+            colors: ["#131049", "#d9f4ff", "#fdced0", "#111111", "#6c6a85"],
+            chart: {
+              height: 260,
+              width: "100%",
+              type: "donut",
+            },
+            stroke: {
+              colors: ["transparent"],
+              lineCap: "",
+            },
+            plotOptions: {
+              pie: {
+                donut: {
+                  labels: {
+                    show: true,
+                    name: {
+                      show: true,
+                      fontFamily: "Inter, sans-serif",
+                      offsetY: 20,
+                    },
+                    total: {
+                      showAlways: true,
+                      show: true,
+                      label: "Total konsumsi",
+                      fontFamily: "Inter, sans-serif",
+                      formatter: function (w) {
+                        const sum = w.globals.seriesTotals.reduce((a, b) => {
+                          return a + b
+                        }, 0)
+                        return `${sum}g`
+                      },
+                    },
+                    value: {
+                      show: true,
+                      fontFamily: "Inter, sans-serif",
+                      offsetY: -20,
+                      formatter: function (value) {
+                        return value + "g"
+                      },
+                    },
+                  },
+                  size: "80%",
+                },
+              },
+            },
+            grid: {
+              padding: {
+                top: -2,
+              },
+            },
+            labels: ["Karbohidrat", "Protein", "Garam", "Gula", "Lemak"],
+            dataLabels: {
+              enabled: false,
+            },
+            legend: {
+              position: "bottom",
+              fontFamily: "Inter, sans-serif",
+            },
+            yaxis: {
+              labels: {
+                formatter: function (value) {
+                  return value + "g"
+                },
+              },
+            },
+            xaxis: {
+              labels: {
+                formatter: function (value) {
+                  return value  + "g"
+                },
+              },
+              axisTicks: {
+                show: false,
+              },
+              axisBorder: {
+                show: false,
+              },
+            },
+          }
+        }
+  
+        if (document.getElementById("donut-chart") && typeof ApexCharts !== 'undefined') {
+          const chart = new ApexCharts (document.getElementById("donut-chart"), getChartOptions());
+          chart.render();
+        }
+    });
+</script>

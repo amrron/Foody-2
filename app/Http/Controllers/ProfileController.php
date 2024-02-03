@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
+use App\Models\User;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
+use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
@@ -62,5 +64,32 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function changePP(Request $request) {
+        $validated = $request->validate([
+            'gambar' => 'image|file|max:2048',
+        ]);
+
+        if($request->file('gambar')){
+            $validated['gambar'] = $request->file('gambar')->store('upload');
+            if($request->old_gambar){
+                Storage::delete($request->old_gambar);
+            }
+        }
+
+        User::where('id', auth()->id())->update($validated);
+
+        return back()->with('change_success', 'Berhasil merubah foto profile');
+    }
+
+    public function removePP(){
+        $gambar = User::where('id', auth()->id())->first()->gambar;
+
+        Storage::delete($gambar);
+
+        User::where('id', auth()->id())->update([
+            'gambar' => null
+        ]);
     }
 }

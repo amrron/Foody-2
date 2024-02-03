@@ -16,6 +16,7 @@
 
         <!-- Scripts -->
         {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/jquery.js', 'resources/css/custom.css', 'resources/js/script.js'])
     </head>
     <body class="font-sans antialiased">

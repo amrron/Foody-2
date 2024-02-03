@@ -19,12 +19,15 @@ export default {
             'biru': '#131049',
             'birumuda': '#d9f4ff',
             'ping' : '#fdced0',
-            'putih' : '#ffffff'
+            'putih' : '#ffffff',
+            'merah' : '#cd224c',
         }
     },
 
     plugins: [
         forms,
-        require('flowbite/plugin')
+        require('flowbite/plugin')({
+            charts: true,
+        }),
     ],
 };
