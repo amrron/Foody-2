@@ -116,7 +116,7 @@
                             <div class="mb-3">
                                 <div class="flex justify-between">
                                     <h5 class="font-bold text-biru">Karbohidrat</h5>
-                                    <p class="text-biru">{{ $user->dailyKarbo }}/{{ $user->batasKarbo }}g</p>
+                                    <p class="text-biru">{{ $user->dailyKarbo }}/{{ $user->batasKarbo }} g</p>
                                 </div>
                                 <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
                                     <div class="bg-biru text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round($user->dailyKarbo / $user->batasKarbo * 100) }}%"> {{ round($user->dailyKarbo / $user->batasKarbo * 100) }}%</div>
@@ -125,7 +125,7 @@
                             <div class="mb-3">
                                 <div class="flex justify-between">
                                     <h5 class="font-bold text-biru">Protein</h5>
-                                    <p class="text-biru">{{ $user->dailyProtein }}/{{ $user->batasProtein }}g</p>
+                                    <p class="text-biru">{{ $user->dailyProtein }}/{{ $user->batasProtein }} g</p>
                                 </div>
                                 <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
                                     <div class="bg-birumuda text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round($user->dailyProtein / $user->batasProtein * 100) }}%"> {{ round($user->dailyProtein / $user->batasProtein * 100) }}%</div>
@@ -134,7 +134,7 @@
                             <div class="mb-3">
                                 <div class="flex justify-between">
                                     <h5 class="font-bold text-biru">Garam</h5>
-                                    <p class="text-biru">{{ $user->dailyGaram }}/{{ $user->batasGaram }}g</p>
+                                    <p class="text-biru">{{ $user->dailyGaram }}/{{ $user->batasGaram }} g</p>
                                 </div>
                                 <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
                                     <div class="bg-ping text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round($user->dailyGaram / $user->batasGaram * 100) }}%"> {{ round($user->dailyGaram / $user->batasGaram * 100) }}%</div>
@@ -143,7 +143,7 @@
                             <div class="mb-3">
                                 <div class="flex justify-between">
                                     <h5 class="font-bold text-biru">Gula</h5>
-                                    <p class="text-biru">{{ $user->dailyGula }}/{{ $user->batasGula }}g</p>
+                                    <p class="text-biru">{{ $user->dailyGula }}/{{ $user->batasGula }} g</p>
                                 </div>
                                 <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
                                     <div class="bg-black text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ $user->dailyGula / $user->batasGula * 100 }}%"> {{ $user->dailyGula / $user->batasGula * 100 }}%</div>
@@ -152,7 +152,7 @@
                             <div class="mb-3">
                                 <div class="flex justify-between">
                                     <h5 class="font-bold text-biru">Lemak</h5>
-                                    <p class="text-biru">{{ $user->dailyLemak }}/{{ $user->batasLemak }}g</p>
+                                    <p class="text-biru">{{ $user->dailyLemak }}/{{ $user->batasLemak }} g</p>
                                 </div>
                                 <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
                                     <div class="bg-[#6c6a85] text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round($user->dailyLemak / $user->batasLemak * 100) }}%"> {{ round($user->dailyLemak / $user->batasLemak * 100) }}%</div>
