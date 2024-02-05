@@ -6,6 +6,7 @@ use App\Models\Makanan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use OpenAI\Laravel\Facades\OpenAI;
+use Illuminate\Support\Facades\Storage;
 
 class MakananController extends Controller
 {
@@ -64,5 +65,76 @@ class MakananController extends Controller
             "title" => $makanan->nama,
             "makanan" => $makanan
         ]);
+    }
+
+    public function detailJson($id) {
+        $makanan = Makanan::where('id', $id)->first();
+
+        return response()->json($makanan, 201);
+    }
+
+    public function store(Request $request){
+        $makanan = $request->validate([
+            'nama' => 'required|string|max:50',
+            'deskripsi' => 'required|string',
+            'gambar' => 'image|file|max:2048',
+            'protein' => 'required|numeric',
+            'karbohidrat' => 'required|numeric',
+            'garam' => 'required|numeric',
+            'gula' => 'required|numeric',
+            'lemak' => 'required|numeric',
+        ]);
+
+        $makanan['slug'] = Str::slug($makanan['nama']);
+        
+        if($request->file('gambar')){
+            $makanan['gambar'] = "/storage/" . $request->file('gambar')->store('upload');
+        }
+
+        Makanan::create($makanan);
+
+        $request->session()->flash('success', 'Berhasil Menambahkan makanan');
+
+        // return redirect("/admin/makanan");
+    }
+
+    public function destroy($id){
+        Makanan::where('id', $id)->delete();
+    }
+
+    public function update(Request $request, Makanan $makanan) {
+        $newmakanan = $request->validate([
+            'id' => 'required',
+            'nama' => 'required|string|max:50',
+            'deskripsi' => 'required|string',
+            'gambar' => 'image|file|max:2048',
+            'protein' => 'required|numeric',
+            'karbohidrat' => 'required|numeric',
+            'garam' => 'required|numeric',
+            'gula' => 'required|numeric',
+            'lemak' => 'required|numeric',
+        ]);
+
+        if($newmakanan['nama'] != $makanan->nama){
+            $newmakanan['slug'] = Str::slug($newmakanan['nama']);
+        }
+
+        if($request->file('gambar')){
+            $newmakanan['gambar'] = "/storage/" . $request->file('gambar')->store('upload');
+            if($request->old_gambar){
+                Storage::delete($request->old_gambar);
+            }
+        }
+        else {
+            $newmakanan['gambar'] = $request->old_gambar;
+        }
+
+        Makanan::where('id', $newmakanan['id'])->update($newmakanan);
+
+        $request->session()->flash('success_edit', 'Berhasil edit makanan');
+
+        return response()->json([
+            'status' => 'success'
+        ], 201);
     }
 }

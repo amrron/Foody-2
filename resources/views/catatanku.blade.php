@@ -594,9 +594,10 @@
                       label: "Total konsumsi",
                       fontFamily: "Inter, sans-serif",
                       formatter: function (w) {
-                        const sum = w.globals.seriesTotals.reduce((a, b) => {
+                        var sum = w.globals.seriesTotals.reduce((a, b) => {
                           return a + b
                         }, 0)
+                        sum = sum.toFixed(2);
                         return `${sum}g`
                       },
                     },

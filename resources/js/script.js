@@ -170,40 +170,171 @@ $(document).ready(function(){
             $('#muter').addClass('animate-spin');
             $('#sedang-mencari').removeClass('hidden');
         }, 2500);
-    })    
+    })
+
+    $('#form-add-makanan').submit(function(e){
+        e.preventDefault();
+
+        var data = new FormData(this);
+        data.append('_token', csrf_token);
+
+        var $modal =  document.getElementById('modal-add-makanan');
+        const modal = new Modal($modal);
+
+        var berhasilMessage = "Makanan berhasil ditambahkan";
+        var gagalMessage = "Makanan gagal ditambahkan";
+        var url = "/admin/makanan";
+        if ($("#input-id-makanan").val() != ""){
+            var url = "/admin/makanan/edit";
+            berhasilMessage = "Makanan berhasil diubah"
+            gagalMessage = "Makanan gagal diubah"
+
+        }
+
+        $.ajax({
+            url : url,
+            type: 'POST',
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function(response){
+                console.log('berhasil menyimpan');
+                modal.hide();
+                $('#toast-success .message').text(berhasilMessage);
+                $('#toast-success').removeClass('hidden');
+
+                setTimeout(function() {
+                    location.reload();
+                }, 700);
+                modal.hide()
+            },
+            error: function(error){
+                console.error(error);
+                modal.hide();
+                $('#toast-danger .message').text(gagalMessage);
+                $('#toast-danger').removeClass('hidden');
+
+            },
+        });
+    });
+
+    $('.hapus-makanan').click(function(e){
+        e.preventDefault();
+
+        var deleteUrl = $(this).attr('href');
+        var itemToDelete = $(this).closest('tr');
+
+        $('#confirm-message').text("Data makanan yang telah dihapus tidak dapat dikembalikan");
+
+        $('#confirm-hapus').click(function(){
+            $.ajax({
+                type: 'DELETE',
+                url: deleteUrl,
+                data: {
+                    _token : csrf_token
+                },
+                success: function(data){
+                    console.log('berhasil menghapus Makanan');
+
+                    $('#toast-success').removeClass('hidden');
+                    $('#toast-success .message').text('Makanan berhasil dihapus.');
+                    setTimeout(function() {
+                        $('#toast-success').addClass('hidden');
+                    }, 3000);
+
+                    itemToDelete.remove();
+                },
+                error: function (error) {
+                    console.error(error);
+                    $('#toast-danger').removeClass('hidden');
+                    $('#toast-danger .message').text('Makanan gagal dihapus. ' + error.responseJSON.message);
+                    setTimeout(function() {
+                        $('#toast-danger').addClass('hidden');
+                    }, 3000);
+                }
+            });
+        });
+    });
+    
+    $('.edit-makanan').click(function(e){
+        e.preventDefault();
+
+        $('#ganti-gambar').removeClass('hidden');php
+        var getUrl = "/admin/makanan/" + $(this).attr('data-id');
+
+        $.ajax({
+            url: getUrl,
+            type: 'GET',
+            success: function(response){
+                console.log(response);
+                $('#input-id-makanan').val(response.id);
+                $('#nama').val(response.nama);
+                $('#deskripsi').val(response.deskripsi);
+                $('#old_gambar').val(response.gambar);
+                $('#karbohidrat').val(response.karbohidrat);
+                $('#protein').val(response.protein);
+                $('#gula').val(response.gula);
+                $('#garam').val(response.garam);
+                $('#lemak').val(response.lemak);
+                $('#previewImage').attr('src', response.gambar);
+                $('#previewImage').removeClass("hidden");
+            },
+            error: function(error){
+                console.error(error.responseText);
+            }
+        })
+
+
+    });
 })
 
-// Buat fungsi untuk mengambil data dari Laravel melalui AJAX
-async function fetchData() {
-    const response = await fetch('/bmi/dataforchart');
-    const data = await response.json();
-    return data;
-}
+$('#gambar-makanan').ready(function() {
+    $('#gambar-makanan').on('change', function(event) {
+        var input = event.target;
+        var reader = new FileReader();
 
-// Fungsi untuk membuat grafik
-async function createChart() {
-    const data = await fetchData();
+        reader.onload = function() {
+            var dataURL = reader.result;
+            $('#previewImage').removeClass('hidden')
+            $('#ganti-gambar').removeClass('hidden')
+            $('#previewImage').attr('src', dataURL);
+        };
+        reader.readAsDataURL(input.files[0]);
 
-    var ctx = document.getElementById('bmiChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: data,
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins:{
-                legend: {
-                    position: 'top'
-                }
-            },
-            scales: {
-                x: {
-                    display: false
-                },
-            }
-        }
     });
-}
+});
 
-// Panggil fungsi untuk membuat grafik saat halaman dimuat
-createChart();
+$('#bmiChart').ready(function(){
+    function createChart(data) {
+        var ctx = document.getElementById('bmiChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins:{
+                    legend: {
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    x: {
+                        display: false
+                    },
+                }
+            }
+        });
+    }
+
+    $.ajax({
+        url: '/bmi/chart-data',
+        type: 'GET',
+        success: function(response){
+            createChart(response);
+        },
+        error: function(error){
+            console.error(error.responseText)
+        }
+    })
+})

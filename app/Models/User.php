@@ -121,13 +121,24 @@ class User extends Authenticatable implements MustVerifyEmail
 
         // Asumsikan kesehatan normal dan aktivitas sedang
         // $aktivitas = 1.2;
-        $aktivitas = $this->aktivitas;
+        $aktivitas = floatval($this->aktivitas);
         $kesehatan = 1;
 
         // Kebutuhan kalori = (10 * berat badan) + (6.25 * tinggi badan) - (5 * umur) + (5 jika laki-laki, -161 jika perempuan)
         $kebutuhankalori = ((10 * $this->beratBadan) + (6.25 * $this->tinggiBadan) - (5 * $this->usia) + ($this->jenis_kelamin == "Laki-laki" ? 5 : -161)) * $aktivitas * $kesehatan;
+        
+        // Kebutuhan Kalori Laki-laki : (88,4 + 13,4 x berat dalam kilogram) + (4,8 x tinggi dalam sentimeter) - (5,68 x usia dalam tahun)
+        // Kebutuhan Kalori Perempuan : (447,6 + 9,25 x berat dalam kilogram) + (3,10 x tinggi dalam sentimeter) - (4,33 x usia dalam tahun)
+        $kebutuhankalori = 0;
+        if ($this->jenis_kelamin == "Laki-laki"){
+            $kebutuhankalori = (88.4 + 13.4 * $this->beratBadan) + (4.8 * $this->tinggiBadan) - (5.68 * $this->usia);
+        } else {
+            $kebutuhankalori = (447.6 + 9.25 * $this->beratBadan) + (3.10 * $this->tinggiBadan) - (4.33 * $this->usia);
+        }
 
-        return $kebutuhankalori;
+        $kebutuhankalori *= $aktivitas;
+
+        return round($kebutuhankalori, 2);
     }
 
     public function getBatasKarboAttribute() {
@@ -157,7 +168,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $query->when($filters['search'] ?? false, function ($query, $search) {
             return $query->where(function ($query) use ($search) {
                 $query->where('name', 'LIKE', '%' . $search . '%')
-                    ->orWhere('username', 'LIKE', '%' . $search . '%');
+                    ->orWhere('email', 'LIKE', '%' . $search . '%');
             });
         });
 
