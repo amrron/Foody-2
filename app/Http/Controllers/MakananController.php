@@ -6,6 +6,7 @@ use App\Models\Makanan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use OpenAI\Laravel\Facades\OpenAI;
+use App\Http\Resources\MakananResource;
 use Illuminate\Support\Facades\Storage;
 
 class MakananController extends Controller
@@ -135,6 +136,27 @@ class MakananController extends Controller
 
         return response()->json([
             'status' => 'success'
+        ], 201);
+    }
+
+    public function getall(){
+        $makanans = Makanan::latest()->filter(request(['search', 'protein', 'karbohidrat', 'garam', 'gula', 'lemak', 'kategori']))->get();
+
+        $makanan = [];
+        foreach($makanans as $makan) {
+            array_push($makanan, new MakananResource($makan));
+        }
+        
+        return response()->json([
+            'status' => "success",
+            'data' => $makanan
+        ], 201);
+    }
+
+    public function detail(Makanan $makanan) {
+        return response()->json([
+            'status' => "success",
+            'data' => new MakananResource($makanan)
         ], 201);
     }
 }

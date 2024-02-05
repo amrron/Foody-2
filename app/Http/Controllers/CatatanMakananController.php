@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Makanan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\CatatanMakanan;
+use Illuminate\Http\JsonResponse;
 use OpenAI\Laravel\Facades\OpenAI;
+use App\Http\Resources\CatatankuResource;
 
 class CatatanMakananController extends Controller
 {
@@ -91,7 +94,7 @@ class CatatanMakananController extends Controller
         CatatanMakanan::where('id', $id)->delete();
     }
 
-    public function history () {
+    public function riwayat () {
         $catatanMakanan = CatatanMakanan::where('user_id', auth()->user()->id)->get()->sortByDesc('waktu');
         $catatanPerTanggal = $catatanMakanan->groupBy('tanggalWaktu');
 
@@ -100,4 +103,118 @@ class CatatanMakananController extends Controller
             "history" => true
         ]);
     }
+
+    public function daily() : JsonResponse {
+
+        $catatanku = CatatanMakanan::where('user_id', auth()->user()->id)->where('waktu', '>=', date('Y-m-d'))->get()->sortBy('waktu');
+        
+        $catatans = [];
+        foreach($catatanku as $catatan){
+            array_push($catatans, new CatatankuResource($catatan));
+        };
+        
+        return response()->json([
+            'status' => "success",
+            'data' => $catatans,
+            'message' => $this->chart()
+        ], 201);
+    }
+
+    public function history() : JsonResponse {
+        
+        $catatans = [];
+
+        $catatanMakanan = CatatanMakanan::where('user_id', auth()->user()->id)->get()->sortByDesc('waktu');
+        $catatanPerTanggal = $catatanMakanan->groupBy('tanggalWaktu');
+
+        foreach($catatanPerTanggal as $tanggal => $catatan){
+            $note = [];
+            foreach($catatan as $catat){
+                array_push($note, new CatatankuResource($catat));
+            }
+            array_push($catatans, [
+                'hari' => Carbon::parse($tanggal)->locale('id')->dayName,
+                'tanggal' => $tanggal,
+                'data' => $note
+            ]);
+        }
+        
+        return response()->json([
+            'status' => "success",
+            'data' => $catatans
+        ], 201);
+    }
+
+    public function delete($id) : JsonResponse {
+
+        $catatan = CatatanMakanan::where('id', $id);
+
+        $catatan->delete();
+
+        return response()->json([
+            'status' => "success",
+            'message' => "Berhasil menghapus catatan"
+        ], 201);
+    }
+
+    public function tanggal($tanggal) : JsonResponse {
+        $catatans = CatatanMakanan::whereDate('waktu', $tanggal)->get();
+        // $catatans = CatatanMakanan::all();
+
+        $catatan = [];
+        foreach($catatans as $catat){
+            array_push($catatan, new CatatankuResource($catat));
+        }
+
+        return response()->json([
+            'status' => "success",
+            'data' => $catatan
+        ], 201);
+    }
+
+    public function chart() {
+        
+        $data = [
+            "labels" => ["Karbohidrat", "Protein", "Garam", "Gula", "Lemak"],
+            "datasets" => [
+                [
+                    "label" => "Dataset 1",
+                    "data" => [round(auth()->user()->dailyKarbo, 1), round(auth()->user()->dailyProtein, 1), round(auth()->user()->dailyGaram, 1), round(auth()->user()->dailyGula, 1), round(auth()->user()->dailyLemak, 1)],
+                    "backgroundColor" => [
+                        "rgb(51, 161, 77)",
+                        "rgb(219, 243, 251)",
+                        "rgb(253, 206, 208)",
+                        "rgb(17, 17, 17)",
+                        "rgb(202, 200, 230)",
+                    ],
+                ],
+            ],
+        ];
+
+        $config = [
+            "type" => "doughnut",
+            "data" => $data,
+            "options" => [
+                "responsive" => true,
+                "plugins" => [
+                    "legend" => [
+                        "position" => "top",
+                        "display" => false
+                    ],
+                    "title" => ["display" => false],
+                    "doughnutlabel" => [
+                        "labels" => [
+                            [ "text" => auth()->user()->dailyKarbo + auth()->user()->dailyProtein + auth()->user()->dailyGaram + auth()->user()->dailyGula + auth()->user()->dailyLemak, "font" => [ "size" => 20 ] ], 
+                            [ "text" => 'total' ]
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        $link = "https://quickchart.io/chart?v=4&bkg=white&width=300&height=300&f=png&c=" . json_encode($config);
+
+        return $link;
+    }
+
 }

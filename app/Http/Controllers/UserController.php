@@ -6,7 +6,10 @@ use App\Models\Bmi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use App\Http\Resources\UserResource;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Resources\SummaryResource;
+use App\Http\Requests\UserUpdateRequest;
 
 class UserController extends Controller
 {
@@ -66,6 +69,34 @@ class UserController extends Controller
             "data" => new UserResource($user),
             "summary" => new SummaryResource($user)
         ], 201);
+    }
+
+    public function update(UserUpdateRequest $request) : JsonResponse{
+
+        $data = $request->validated();
+        $user = auth()->user();
+
+        if(isset($data['name'])){
+            $user->name = $data['name'];
+        }
+        if(isset($data['email'])){
+            $user->email = $data['email'];
+        }
+        if(isset($data['jenis_kelamin'])){
+            $user->jenis_kelamin = $data['jenis_kelamin'];
+        }
+        if(isset($data['tanggal_lahir'])){
+            $user->tanggal_lahir = $data['tanggal_lahir'];
+        }
+        if(isset($data['aktivitas'])){
+            $user->aktivitas = $data['aktivitas'];
+        }
+        if(isset($data['password'])){
+            $user->password = $data['password'];
+        }
+
+        $user->save();
+        return (new UserResource($user))->response()->setStatusCode(201);
     }
 
 }

@@ -47,14 +47,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     Route::get('/bmi', [BmiController::class, 'index'])->name("bmi");
     Route::post('/bmi', [BmiController::class, 'store'])->name('bmi');
-    Route::get('/bmi/history', [BmiController::class, 'history']);
+    Route::get('/bmi/history', [BmiController::class, 'riwayat']);
     Route::get('/bmi/chart-data', [BmiController::class, 'chart']);
     Route::delete('/bmi/delete/{id}', [BmiController::class, 'destroy']);
 
     Route::post('/catatanku/input', [CatatanMakananController::class, 'input']);
     Route::get('/catatanku', [CatatanMakananController::class, 'index'])->name('catatanku');
     Route::delete('/catatanku/delete/{id}', [CatatanMakananController::class, 'destroy']);
-    Route::get('/catatanku/history', [CatatanMakananController::class, 'history']);
+    Route::get('/catatanku/history', [CatatanMakananController::class, 'riwayat']);
 
     Route::get('/makanan', [MakananController::class, 'index'])->name('makanan');
     Route::get('/makanan/{makanan:slug}', [MakananController::class, 'detailMakanan']);
