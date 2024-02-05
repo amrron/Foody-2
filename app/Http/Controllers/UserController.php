@@ -10,6 +10,7 @@ use App\Http\Resources\UserResource;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Resources\SummaryResource;
 use App\Http\Requests\UserUpdateRequest;
+use App\Notifications\EmailVerificationNotification;
 
 class UserController extends Controller
 {
@@ -24,6 +25,8 @@ class UserController extends Controller
         $validatedUser["waktu"] = date('Y-m-d');
 
         Bmi::create($validatedUser);
+
+        $user->notify(new EmailVerificationNotification());
 
         return response()->json([
             "id" => $user->id,

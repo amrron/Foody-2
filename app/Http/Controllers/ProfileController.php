@@ -91,5 +91,30 @@ class ProfileController extends Controller
         User::where('id', auth()->id())->update([
             'gambar' => null
         ]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Berhasil menghapus gambar'
+        ], 201);
+    }
+
+    public function changeGambar(Request $request) {
+        $validated = $request->validate([
+            'gambar' => 'image|file|max:2048',
+        ]);
+
+        if($request->file('gambar')){
+            $validated['gambar'] = $request->file('gambar')->store('upload');
+            if($request->old_gambar){
+                Storage::delete($request->old_gambar);
+            }
+        }
+
+        User::where('id', auth()->id())->update($validated);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Berhasil merubah gambar'
+        ], 201);
     }
 }

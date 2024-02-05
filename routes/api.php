@@ -3,9 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BmiController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MakananController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CatatanMakananController;
+use App\Http\Controllers\EmailVerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +44,11 @@ Route::middleware(['auth:sanctum'])->group(function() {
     Route::get(("/bmi/history"), [BmiController::class, 'history']);
     Route::delete(("/bmi/delete/{bmi}"), [BmiController::class, 'delete']);
     Route::get("/bmi/chart/", [BmiController::class, 'apichart']);
+
+    Route::post('/profile/update-gambar', [ProfileController::class, 'changeGambar']);
+    Route::delete('/profile/hapus-gambar', [ProfileController::class, 'removePP']);
+
+    Route::post('/email-verification', [EmailVerificationController::class, 'email_verification']);
 });
 
 Route::post("/users", [UserController::class, 'store']);
