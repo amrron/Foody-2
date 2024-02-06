@@ -2,7 +2,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="/login">
         @csrf
 
         <!-- Email Address -->
@@ -40,6 +40,6 @@
             </button>
         </div>
 
-        <p class="mt-3">Belum memiliki akun? <a href="{{ route('register') }}" class="text-biru">Buat sekarang</a></p>
+        <p class="mt-3">Belum memiliki akun? <a href="/register" class="text-biru">Buat sekarang</a></p>
     </form>
 </x-guest-layout>

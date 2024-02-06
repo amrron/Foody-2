@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="/register">
         @csrf
 
         <!-- Name -->
@@ -92,6 +92,6 @@
             </button>
         </div>
 
-        <p class="mt-3">Sudah memiliki akun? <a href="{{ route('login') }}" class="text-biru">Masuk</a></p>
+        <p class="mt-3">Sudah memiliki akun? <a href="/login" class="text-biru">Masuk</a></p>
     </form>
 </x-guest-layout>
