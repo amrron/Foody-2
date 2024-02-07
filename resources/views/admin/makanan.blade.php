@@ -55,9 +55,9 @@
                     <td class="px-6 py-4">
                         {{ $makanan->deskripsi }}
                     </td>
-                    <td class="px-6 py-4 inline-flex">
+                    <td class="px-6 py-4 inline-flex items-center justify-center text-center h-full">
                         <a href="/admin/makanan/{{ $makanan->id }}" data-modal-target="modal-add-makanan" data-modal-toggle="modal-add-makanan" class="edit-makanan font-medium text-blue-600 dark:text-blue-500 hover:underline" data-id="{{ $makanan->id }}">Edit</a>
-                        &nbsp; | &nbsp;
+                        <span class="mx-1">|</span>
                         <a href="/admin/makanan/hapus/{{ $makanan->id }}" data-modal-target="confirm-modal" data-modal-toggle="confirm-modal" class="hapus-makanan font-medium text-red-600 dark:text-red-500 hover:underline">Hapus</a>
                     </td>
                 </tr>
@@ -131,9 +131,9 @@
                         </div>                    
                     </div>
                 </div>
-                <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="submit-makanan">
                     <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                    Add new product
+                    Tambah makanan
                 </button>
             </form>
         </div>
@@ -178,11 +178,11 @@
                   </svg>
                 <h2 class="font-bold text-biru text-xl mb-3">Apakah anda yakin?</h2>
                 <h3 class="mb-5 text-sm font-normal text-biru dark:text-gray-400" id="confirm-message">Data catatan yang telah dihapus tidak dapat dikembalikan</h3>
-                <button data-modal-hide="confirm-modal" type="button" class="text-biru bg-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                    Batal
-                </button>
                 <button data-modal-hide="confirm-modal" type="button" id="confirm-hapus" class="text-white bg-merah hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                     Ya, Saya yakin
+                </button>
+                <button data-modal-hide="confirm-modal" type="button" class="text-biru bg-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                    Batal
                 </button>
             </div>
         </div>

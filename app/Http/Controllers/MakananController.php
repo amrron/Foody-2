@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class MakananController extends Controller
 {
     public function index(Request $request) {
-        if(empty(Makanan::where('nama', 'LIKE', '%' . $request->search . '%')->first())){
+        if(empty(Makanan::where('nama', 'LIKE', '%' . $request->search . '%')->first()) && isset($request->search)){
             $compilation = $this->generateMakanan($request->search);
 
             $result = $compilation['choices'][0]['message']['content'];

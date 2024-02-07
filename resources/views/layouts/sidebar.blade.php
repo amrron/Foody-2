@@ -49,12 +49,12 @@
          </li> --}}
          <li>
             <x-side-link href="{{ route('admin.makanan') }}" :active="request()->routeIs('admin.makanan')" class="flex items-center p-2 text-biru rounded-lg dark:text-white  dark:hover:bg-gray-700 group">
-               <svg class="flex-shrink-0 w-5 h-5 text-biru transition duration-75 dark:text-gray-400 group-hover:text-biru dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 192c0-35.3 28.7-64 64-64c.5 0 1.1 0 1.6 0C73 91.5 105.3 64 144 64c15 0 29 4.1 40.9 11.2C198.2 49.6 225.1 32 256 32s57.8 17.6 71.1 43.2C339 68.1 353 64 368 64c38.7 0 71 27.5 78.4 64c.5 0 1.1 0 1.6 0c35.3 0 64 28.7 64 64c0 11.7-3.1 22.6-8.6 32H8.6C3.1 214.6 0 203.7 0 192zm0 91.4C0 268.3 12.3 256 27.4 256H484.6c15.1 0 27.4 12.3 27.4 27.4c0 70.5-44.4 130.7-106.7 154.1L403.5 452c-2 16-15.6 28-31.8 28H140.2c-16.1 0-29.8-12-31.8-28l-1.8-14.4C44.4 414.1 0 353.9 0 283.4z"/></svg>
+               <svg class="flex-shrink-0 w-5 h-5 text-biru transition duration-75 dark:text-gray-400 group-hover:text-biru dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg"  fill="currentColor" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 192c0-35.3 28.7-64 64-64c.5 0 1.1 0 1.6 0C73 91.5 105.3 64 144 64c15 0 29 4.1 40.9 11.2C198.2 49.6 225.1 32 256 32s57.8 17.6 71.1 43.2C339 68.1 353 64 368 64c38.7 0 71 27.5 78.4 64c.5 0 1.1 0 1.6 0c35.3 0 64 28.7 64 64c0 11.7-3.1 22.6-8.6 32H8.6C3.1 214.6 0 203.7 0 192zm0 91.4C0 268.3 12.3 256 27.4 256H484.6c15.1 0 27.4 12.3 27.4 27.4c0 70.5-44.4 130.7-106.7 154.1L403.5 452c-2 16-15.6 28-31.8 28H140.2c-16.1 0-29.8-12-31.8-28l-1.8-14.4C44.4 414.1 0 353.9 0 283.4z"/></svg>
                <span class="flex-1 ms-3 whitespace-nowrap">Makanan</span>
             </x-side-link>
          </li>
          <li>
-            <x-side-link href="{{ route('admin.user') }}" :active="request()->routeIs('admin.user')" class="flex items-center p-2 text-biru rounded-lg dark:text-white  dark:hover:bg-gray-700 group">
+            <x-side-link href="{{ route('admin.user') }}" :active="request()->routeIs('admin.produk')" class="flex items-center p-2 text-biru rounded-lg dark:text-white  dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-5 h-5 text-biru transition duration-75 dark:text-gray-400 group-hover:text-biru dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
                   <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
                </svg>
@@ -62,7 +62,7 @@
             </x-side-link>
          </li>
          <li>
-            <x-side-link href="{{ route('admin.user') }}" :active="request()->routeIs('admin.user')" class="flex items-center p-2 text-biru rounded-lg dark:text-white  dark:hover:bg-gray-700 group">
+            <x-side-link href="/" :active="request()->routeIs('home')" class="flex items-center p-2 text-biru rounded-lg dark:text-white  dark:hover:bg-gray-700 group">
                <svg class="flex-shrink-0 w-5 h-5 text-biru transition duration-75 dark:text-gray-400 group-hover:text-biru dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                   <path fill-rule="evenodd" d="M11.3 3.3a1 1 0 0 1 1.4 0l6 6 2 2a1 1 0 0 1-1.4 1.4l-.3-.3V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3c0 .6-.4 1-1 1H7a2 2 0 0 1-2-2v-6.6l-.3.3a1 1 0 0 1-1.4-1.4l2-2 6-6Z" clip-rule="evenodd"/>
                </svg>
@@ -70,12 +70,15 @@
             </x-side-link>
          </li>
          <li>
-            <x-side-link href="{{ route('admin.user') }}" :active="request()->routeIs('admin.user')" class="flex items-center p-2 text-biru rounded-lg dark:text-white  dark:hover:bg-gray-700 group">
-               <svg class="flex-shrink-0 w-5 h-5 text-biru transition duration-75 dark:text-gray-400 group-hover:text-biru dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
-               </svg>                
-               <span class="flex-1 ms-3 whitespace-nowrap">Log Out</span>
-            </x-side-link>
+            <form action="/logout" method="post">
+               @csrf
+               <button type="submit" class="flex items-center p-2 text-biru rounded-lg dark:text-white  dark:hover:bg-gray-700 group">
+                  <svg class="flex-shrink-0 w-5 h-5 text-biru transition duration-75 dark:text-gray-400 group-hover:text-biru dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
+                  </svg>                
+                  <span class="flex-1 ms-3 whitespace-nowrap">Log Out</span>
+               </button>
+            </form>
          </li>
       </ul>
    </div>

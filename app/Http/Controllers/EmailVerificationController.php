@@ -15,13 +15,13 @@ class EmailVerificationController extends Controller
         $this->otp = new Otp;
     }
     public function email_verification(EmailVerificationRequest $request) {
-        $otp2 = $this->otp->validate($request->email, $request->otp);
+        $user = auth()->user();
+        $otp2 = $this->otp->validate($user->email, $request->otp);
         if(!$otp2->status){
             return response()->json([
                 'error' => $otp2
             ], 401);
         }
-        $user = User::where('email', $request->email)->first();
        
         if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));

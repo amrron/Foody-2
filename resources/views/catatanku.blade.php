@@ -96,60 +96,64 @@
                         </div>
                     </swiper-slide>
                 </swiper-container>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 p-3 hidden w-full" id="open-donat">
-                    <div class="bg-white rounded-lg p-4 md:p-6"> 
-                        <div class="py-6" id="donut-chart"></div>
-                    </div>
-                    <div class="flex justify-center items-center hidden md:flex">
-                        <div class=" w-full">
-                            <div class="mb-3">
-                                <div class="flex justify-between">
-                                    <h5 class="font-bold text-biru">Karbohidrat</h5>
-                                    <p class="text-biru">{{ auth()->user()->dailyKarbo }}/{{ auth()->user()->batasKarbo }}g</p>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
-                                    <div class="bg-biru text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round(auth()->user()->dailyKarbo / auth()->user()->batasKarbo * 100) }}%"> {{ round(auth()->user()->dailyKarbo / auth()->user()->batasKarbo * 100) }}%</div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="flex justify-between">
-                                    <h5 class="font-bold text-biru">Protein</h5>
-                                    <p class="text-biru">{{ auth()->user()->dailyProtein }}/{{ auth()->user()->batasProtein }}g</p>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
-                                    <div class="bg-birumuda text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round(auth()->user()->dailyProtein / auth()->user()->batasProtein * 100) }}%"> {{ round(auth()->user()->dailyProtein / auth()->user()->batasProtein * 100) }}%</div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="flex justify-between">
-                                    <h5 class="font-bold text-biru">Garam</h5>
-                                    <p class="text-biru">{{ auth()->user()->dailyGaram }}/{{ auth()->user()->batasGaram }}g</p>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
-                                    <div class="bg-ping text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round(auth()->user()->dailyGaram / auth()->user()->batasGaram * 100) }}%"> {{ round(auth()->user()->dailyGaram / auth()->user()->batasGaram * 100) }}%</div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="flex justify-between">
-                                    <h5 class="font-bold text-biru">Gula</h5>
-                                    <p class="text-biru">{{ auth()->user()->dailyGula }}/{{ auth()->user()->batasGula }}g</p>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
-                                    <div class="bg-black text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ auth()->user()->dailyGula / auth()->user()->batasGula * 100 }}%"> {{ auth()->user()->dailyGula / auth()->user()->batasGula * 100 }}%</div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="flex justify-between">
-                                    <h5 class="font-bold text-biru">Lemak</h5>
-                                    <p class="text-biru">{{ auth()->user()->dailyLemak }}/{{ auth()->user()->batasLemak }}g</p>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
-                                    <div class="bg-[#6c6a85] text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round(auth()->user()->dailyLemak / auth()->user()->batasLemak * 100) }}%"> {{ round(auth()->user()->dailyLemak / auth()->user()->batasLemak * 100) }}%</div>
-                                </div>
-                            </div> 
+                <swiper-container id="open-donat" pagination="true" class="hidden w-full">
+                    <swiper-slide>
+                        <div class="bg-white rounded-lg p-4 md:p-6"> 
+                            <div class="py-6" id="donut-chart"></div>
                         </div>
-                    </div>
-                </div>
+                    </swiper-slide>
+                    <swiper-slide>
+                        <div class="flex justify-center items-center">
+                            <div class=" w-full">
+                                <div class="mb-3">
+                                    <div class="flex justify-between">
+                                        <h5 class="font-bold text-biru">Karbohidrat</h5>
+                                        <p class="text-biru">{{ auth()->user()->dailyKarbo }}/{{ auth()->user()->batasKarbo }}g</p>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
+                                        <div class="bg-biru text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round(auth()->user()->dailyKarbo / auth()->user()->batasKarbo * 100) }}%"> {{ round(auth()->user()->dailyKarbo / auth()->user()->batasKarbo * 100) }}%</div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="flex justify-between">
+                                        <h5 class="font-bold text-biru">Protein</h5>
+                                        <p class="text-biru">{{ auth()->user()->dailyProtein }}/{{ auth()->user()->batasProtein }}g</p>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
+                                        <div class="bg-birumuda text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round(auth()->user()->dailyProtein / auth()->user()->batasProtein * 100) }}%"> {{ round(auth()->user()->dailyProtein / auth()->user()->batasProtein * 100) }}%</div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="flex justify-between">
+                                        <h5 class="font-bold text-biru">Garam</h5>
+                                        <p class="text-biru">{{ auth()->user()->dailyGaram }}/{{ auth()->user()->batasGaram }}g</p>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
+                                        <div class="bg-ping text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round(auth()->user()->dailyGaram / auth()->user()->batasGaram * 100) }}%"> {{ round(auth()->user()->dailyGaram / auth()->user()->batasGaram * 100) }}%</div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="flex justify-between">
+                                        <h5 class="font-bold text-biru">Gula</h5>
+                                        <p class="text-biru">{{ auth()->user()->dailyGula }}/{{ auth()->user()->batasGula }}g</p>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
+                                        <div class="bg-black text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ auth()->user()->dailyGula / auth()->user()->batasGula * 100 }}%"> {{ auth()->user()->dailyGula / auth()->user()->batasGula * 100 }}%</div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="flex justify-between">
+                                        <h5 class="font-bold text-biru">Lemak</h5>
+                                        <p class="text-biru">{{ auth()->user()->dailyLemak }}/{{ auth()->user()->batasLemak }}g</p>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
+                                        <div class="bg-[#6c6a85] text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round(auth()->user()->dailyLemak / auth()->user()->batasLemak * 100) }}%"> {{ round(auth()->user()->dailyLemak / auth()->user()->batasLemak * 100) }}%</div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </swiper-slide>
+                </swiper-container>
             </div>
         </div>
         @endif
@@ -550,11 +554,11 @@
                   </svg>
                 <h2 class="font-bold text-biru text-xl mb-3">Apakah anda yakin?</h2>
                 <h3 class="mb-5 text-sm font-normal text-biru dark:text-gray-400">Data catatan yang telah dihapus tidak dapat dikembalikan</h3>
-                <button data-modal-hide="confirm-modal" type="button" class="text-biru bg-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                    Batal
-                </button>
                 <button data-modal-hide="confirm-modal" type="button" id="confirm-hapus" class="text-white bg-merah hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                     Ya, Saya yakin
+                </button>
+                <button data-modal-hide="confirm-modal" type="button" class="text-biru bg-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                    Batal
                 </button>
             </div>
         </div>
@@ -655,4 +659,28 @@
           chart.render();
         }
     });
+</script>
+<script>
+    const swiper = document.querySelector('#open-donat');
+
+    const swiperParams = {
+    slidesPerView: 1,
+    breakpoints: {
+        640: {
+            slidesPerView: 1,
+        },
+        768: {
+            slidesPerView: 2,
+        },
+    },
+    on: {
+      init() {
+
+      },
+    },
+  };
+
+  Object.assign(swiper, swiperParams);
+
+  swiper.initialize();
 </script>

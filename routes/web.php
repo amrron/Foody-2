@@ -28,12 +28,15 @@ Route::get('/success-verify', function(){
     return view('auth.success-verify');
 })->name('succes_verify');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    
+
+    Route::get('/home', function () {
+        return view('home');
+    })->name('home');
     Route::get('/forgot-password', function () {
         return view('auth.forgot-password');
     })->name('forgotpassword');
@@ -60,7 +63,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/makanan/{makanan:slug}', [MakananController::class, 'detailMakanan']);
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('/admin', function(){
         return view('admin.dashboard');
     })->name('admin.dashboard');

@@ -259,7 +259,10 @@ $(document).ready(function(){
     $('.edit-makanan').click(function(e){
         e.preventDefault();
 
-        $('#ganti-gambar').removeClass('hidden');php
+        $('#judul-modal').text('Edit data makanan');
+        $('#ganti-gambar').removeClass('hidden');
+        $('#submit-makanan').text('Ubah makanan')
+
         var getUrl = "/admin/makanan/" + $(this).attr('data-id');
 
         $.ajax({
@@ -315,7 +318,7 @@ $('#bmiChart').ready(function(){
                 maintainAspectRatio: false,
                 plugins:{
                     legend: {
-                        position: 'top'
+                        position: 'bottom'
                     }
                 },
                 scales: {

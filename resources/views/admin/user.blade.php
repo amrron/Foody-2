@@ -31,6 +31,9 @@
                     <th scope="col" class="px-6 py-3">
                         Bergabung
                     </th>
+                    <th scope="col" class="px-6 py-3 text-center">
+                        Verivikasi
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -43,7 +46,7 @@
                         {{ $i }}
                     </th>
                     <td class="px-6 py-4 flex justify-center">
-                        <img src="{{ "/storage/" . $user->gambar }}" alt="" class="w-8 rounded-full">
+                        <img src="{{ isset($user->gambar) ? "/storage/" . $user->gambar : "/assets/img/profileimg.webp"}}" alt="" class="w-8 rounded-full">
                     </td>
                     <th class="px-6 py-4">
                         {{ $user->name }}
@@ -53,6 +56,17 @@
                     </td>
                     <td class="px-6 py-4">
                         {{ $user->created_at }}
+                    </td>
+                    <td class="px-6 py-4 flex justify-center">
+                        @if ($user->email_verified_at)
+                        <svg class="w-6 h-6 text-green-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 12 4.7 4.5 9.3-9"/>
+                        </svg>
+                        @else
+                        <svg class="w-6 h-6 text-merah dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6m0 12L6 6"/>
+                        </svg>
+                        @endif
                     </td>
                 </tr>
                 @php

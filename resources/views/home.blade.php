@@ -120,8 +120,8 @@
     </div>
 
     <div class="max-w-7xl mx-auto p-6 lg:p-8 flex items-center">
-        <div class="bg-birumuda rounded-lg mt-5 mb-5 p-3">
-            <div class="flex flex-col md:flex-row mt-5 mx-2 my-2 rounded-lg">
+        <div class="bg-birumuda rounded-[20px] mt-5 mb-5 p-3">
+            <div class="flex flex-col md:flex-row mt-5 mx-2 my-2 rounded-[20px]">
                 <div class="md:w-1/2 p-5 flex flex-col justify-center">
                     <h1 class="text-xl text-biru font-medium md:text-3xl">Download Sekarang Juga!</h1>
                     <p class="text-sm md:text-base text-biru mt-3">Dapatkan aplikasi foody untuk perangkat android sekarang juga</p>
