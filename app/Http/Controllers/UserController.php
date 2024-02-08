@@ -74,6 +74,15 @@ class UserController extends Controller
         ], 201);
     }
 
+    function summary() {
+        $user = auth()->user();
+
+        return response()->json([
+            "status" => "success",
+            "data" => new SummaryResource($user)
+        ], 201);
+    }
+
     public function update(UserUpdateRequest $request) : JsonResponse{
 
         $data = $request->validated();

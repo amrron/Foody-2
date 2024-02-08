@@ -26,13 +26,13 @@ use App\Http\Controllers\EmailVerificationController;
 // });
 
 Route::middleware(['auth:sanctum', 'email_verified'])->group(function() {
-//     Route::get("/users/summary", [UserController::class, 'summary']);
+    Route::get("/users/summary", [UserController::class, 'summary']);
     Route::post("/users/logout", [UserController::class, 'logout']);
     Route::put("/users/update", [UserController::class, 'update']);
 //     Route::post("/users/report", [UserController::class, 'report']);
 
-    Route::post("/catatanku", [CatatanMakananController::class, 'input']);
-//     Route::post("catatanku/store", [CatatankuController::class, 'input']);
+    // Route::post("/catatanku", [CatatanMakananController::class, 'input']);
+    Route::post("/catatanku/store", [CatatanMakananController::class, 'input']);
     Route::get("/catatanku/daily", [CatatanMakananController::class, 'daily']);
     Route::get("/catatanku/history", [CatatanMakananController::class, 'history']);
     Route::get("/catatanku/tanggal/{tanggal}", [CatatanMakananController::class, 'tanggal']);
