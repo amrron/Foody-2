@@ -151,7 +151,19 @@ class BmiController extends Controller
             ],
         ];
 
-        return response()->json($data);
+        $setup = [
+            "type" => "line",
+            "data" => $data,
+            "options" => [
+                "responsive" => true,
+                "maintainAspectRatio" => false,
+                "plugins" => ["legend" => ["position" => "top"]],
+                "scales" => ["x" => ["display" => false]],
+            ],
+        ];
+
+        $link = "https://quickchart.io/chart?v=4&bkg=rgb(217, 244, 255)&f=svg&c=" . json_encode($setup);
+        return $link;
     }
 
     public function input(BmiRequest $request){
