@@ -47,6 +47,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile/setting', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profile/update-gambar', [ProfileController::class, 'changePP']);
     Route::patch('/profile/hapus-gambar', [ProfileController::class, 'removePP']);
+    Route::post('/profile/report', [CatatanMakananController::class, 'report']);
     
     Route::get('/bmi', [BmiController::class, 'index'])->name("bmi");
     Route::post('/bmi', [BmiController::class, 'store'])->name('bmi');

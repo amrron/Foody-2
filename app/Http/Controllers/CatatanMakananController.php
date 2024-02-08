@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Pdf;
 use Carbon\Carbon;
 use App\Models\Makanan;
 use Illuminate\Support\Str;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\CatatanMakanan;
 use Illuminate\Http\JsonResponse;
 use OpenAI\Laravel\Facades\OpenAI;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Resources\CatatankuResource;
 
 class CatatanMakananController extends Controller
@@ -215,6 +217,67 @@ class CatatanMakananController extends Controller
         $link = "https://quickchart.io/chart?v=4&bkg=white&width=300&height=300&f=png&c=" . json_encode($config);
 
         return $link;
+    }
+
+    public function report(Request $request) {
+
+        $makanan = CatatanMakanan::where('user_id', auth()->user()->id);
+        
+        if(isset($request->start) && isset($request->end)){
+            $catatanMakanan = $makanan->where('waktu', '>=', $request->start)->where('waktu', '<=', $request->end . ' 23:59');
+        }
+        
+        if(isset($request->start)){
+            $catatanMakanan = $makanan->where('waktu', '>=', $request->start);
+        }
+        
+        if(isset($request->end)){
+            $catatanMakanan = $makanan->where('waktu', '<=', $request->end . ' 23:59');
+        }
+        
+
+        else {
+            $catatanMakanan = $makanan;
+        }
+        
+        $catatanMakanan = $catatanMakanan->get()->sortBy('waktu');
+
+
+
+        $catatanPerTanggal = $catatanMakanan->groupBy('tanggalWaktu');
+        $total_jumlah = $catatanMakanan->sum('jumlah');
+        $total_karbohidrat = $catatanMakanan->sum(function($catatan){ return $catatan->jumlah * $catatan->makanan->karbohidrat; });
+        $total_protein = $catatanMakanan->sum(function($catatan){ return $catatan->jumlah * $catatan->makanan->protein; });
+        $total_garam = $catatanMakanan->sum(function($catatan){ return $catatan->jumlah * $catatan->makanan->garam; });
+        $total_gula = $catatanMakanan->sum(function($catatan){ return $catatan->jumlah * $catatan->makanan->gula; });
+        $total_lemak = $catatanMakanan->sum(function($catatan){ return $catatan->jumlah * $catatan->makanan->lemak; });
+
+        $data = [
+            'title' => "Report Catatan Makanan " . auth()->user()->username,
+            'catatans' => $catatanPerTanggal,
+            'total_jumlah' => $total_jumlah,
+            'total_karbohidrat' => $total_karbohidrat,
+            'total_protein' => $total_protein,
+            'total_garam' => $total_garam,
+            'total_gula' => $total_gula,
+            'total_lemak' => $total_lemak,
+            'email' => auth()->user()->email
+        ];
+
+        $pdf = Pdf::loadView('report', $data)->setOptions(['defaultFont' => 'sans-serif']);
+
+        Mail::send('report', $data, function($message) use ($data, $pdf) {
+            $message->to($data['email'], $data['email'])
+                    ->subject($data['title'])
+                    ->attachData($pdf->output(), "Report_Catatan_Makanan_" . auth()->user()->name . ".pdf");
+        });
+
+        return back()->with('status', 'report-send');
+
+        // return response()->json([
+        //     "status" => "success",
+        //     "message" => "Data Report berhasil dikirim ke email " . auth()->user()->email
+        // ], 201);
     }
 
 }

@@ -664,6 +664,7 @@
     const swiper = document.querySelector('#open-donat');
 
     const swiperParams = {
+    initialSlide: 2,
     slidesPerView: 1,
     breakpoints: {
         640: {
@@ -675,7 +676,7 @@
     },
     on: {
       init() {
-
+        
       },
     },
   };

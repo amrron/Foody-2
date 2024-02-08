@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        <div class="mt-4">
+        <div class="mt-4 mb-3">
             <h2 class="text-biru text-3xl font-normal">Makanan</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 @foreach ($makanans as $makanan)
@@ -72,6 +72,6 @@
                 @endforeach
             </div>
         </div>
-        
+        {{ $makanans->appends(['search' => request()->get('search')])->links() }}
     </div>
 </x-app-layout>

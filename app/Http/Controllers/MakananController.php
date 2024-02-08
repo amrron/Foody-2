@@ -35,7 +35,7 @@ class MakananController extends Controller
             $makanan = Makanan::create($new_makanan);
         }
 
-        $makanans = Makanan::latest()->filter(request(['search', 'protein', 'karbohidrat', 'garam', 'gula', 'lemak', 'kategori']))->get();
+        $makanans = Makanan::latest()->filter(request(['search', 'protein', 'karbohidrat', 'garam', 'gula', 'lemak', 'kategori']))->paginate(12);
 
         return view('makanan', [
             'makanans' => $makanans

@@ -187,6 +187,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'Otp' => \Ichtrojan\Otp\Otp::class,
+        'PDF' => \Barryvdh\DomPDF\Facade::class,
     ])->toArray(),
 
 ];

@@ -6,7 +6,7 @@
                 <h2 class="font-semibold text-2xl mb-2 text-biru">FOODY</h2>
                 <h1 class="text-5xl font-bold text-biru w-full">Kesehatan Tubuh Membaik</h1>
                 <h4 class="text-lg text-biru mb-3 w-full">Solusi Untuk menjaga kesehatan Tubuh Anda</h4>
-                <button type="button" class="w-40 bg-biru text-birumuda hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">Show More</button>
+                <a href="#catatanku" class="w-40 bg-biru text-birumuda hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none text-center">Show More</a>
             </div>
             <div class="w-full">
                 <img src="/assets/img/banner1.png" class="w-full" alt="">
@@ -22,12 +22,12 @@
         </svg>
     </div>
 
-    <div class="max-w-7xl mx-auto p-6 lg:p-8 min-h-screen flex items-center">
+    <div class="max-w-7xl mx-auto p-6 lg:p-8 min-h-screen flex items-center" id="catatanku">
         <div class="flex w-full flex-col md:flex-row">
             <div class="flex flex-col justify-center">
                 <h1 class="text-5xl font-bold text-biru w-full">Pilih waktu makan Anda untuk mencatat pola makan Anda dengan Catatanku</h1>
-                <p class="text-base text-biru mb-3">Pilih waktu makan Anda untuk mencatat pola makan Anda dengan Catatanku</p>
-                <button type="button" class="w-20 bg-birumuda text-biru hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none dark:focus:ring-blue-800">Try It</button>
+                <p class="text-base text-biru mb-3">Anda dapat mencatat semua jenis makanan yang  dikonsumsi sepanjang hari. Anda juga dapat dengan cepat menambahkan makanan yang  dimakan</p>
+                <a href="/catatanku" class="w-20 bg-birumuda text-biru hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none dark:focus:ring-blue-800">Try It</a>
             </div>
             <div class="w-full">
                 <img src="/assets/img/catatan_page.png" class="w-full" alt="">
@@ -44,8 +44,21 @@
                 <div class="max-w-2xl flex flex-col items-center">
                     <h1 class="text-5xl text-biru text-center">Catat dan Pantau BMI Anda dengan Mudah Bersama Foody</h1>
                     <p class="text-biru text-center mb-3">Dengan fitur pencatatan BMI kami, Anda dapat dengan cepat memantau perubahan dalam perjalanan kesehatan Anda. Tidak perlu repot, cukup masukkan data berat dan tinggi tubuh Anda, dan "Foody" akan menghitung BMI Anda secara otomatis. Pantau perkembangan Anda menuju kehidupan sehat yang lebih baik!</p>
-                    <button type="button" class="w-20 bg-birumuda text-biru hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none dark:focus:ring-blue-800">Try It</button>
+                    <a href="/bmi" class="w-20 bg-birumuda text-biru hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none dark:focus:ring-blue-800">Try It</a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto min-h-screen p-6 lg:p-8 flex items-center">
+        <div class="flex w-full flex-col md:flex-row">
+            <div class="flex flex-col justify-center">
+                <h1 class="text-5xl font-bold text-biru w-full">Temukan Data Makanan Dengn Foody AI</h1>
+                <p class="text-base text-biru mb-3">Cari makanan ada lalu Foody AI akan mencari data makanan anda secara lengkap</p>
+                <a href="/makanan" class="w-20 bg-birumuda text-biru hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none dark:focus:ring-blue-800">Try It</a>
+            </div>
+            <div class="w-full p-5 flex items-center justify-center">
+                <img src="/assets/img/target.png" class="h-3/4" alt="">
             </div>
         </div>
     </div>
@@ -77,13 +90,13 @@
                     <h2 class="text-biru text-[36px] text-center mb-6">
                         Hitung BMI Anda
                     </h2>
-                    <form class="flex flex-col justify-center" action="">
+                    <form class="flex flex-col justify-center" id="hitung" action="">
                         <div class="mb-6">
                             <label for="tinggi_badan" class="block mb-2 text-sm font-medium text-biru">Tinggi badan</label>
                             <input type="number" id="tinggi_badan" class="border border-biru text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:focus:ring-blue-500 " placeholder="cm" required>
                         </div>
                         <div class="mb-6">
-                            <label for="berat_badan" class="block mb-2 text-sm font-medium text-biru">Tinggi badan</label>
+                            <label for="berat_badan" class="block mb-2 text-sm font-medium text-biru">Berat badan</label>
                             <input type="number" id="berat_badan" class="border border-biru text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="kg" required>
                         </div>
                         <button type="submit" class="text-birumuda bg-biru hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Hitung</button>
@@ -119,7 +132,7 @@
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto p-6 lg:p-8 flex items-center">
+    <div class="max-w-7xl mx-auto min-h-screen p-6 lg:p-8 flex items-center">
         <div class="bg-birumuda rounded-[20px] mt-5 mb-5 p-3">
             <div class="flex flex-col md:flex-row mt-5 mx-2 my-2 rounded-[20px]">
                 <div class="md:w-1/2 p-5 flex flex-col justify-center">
@@ -141,3 +154,38 @@
         </div>        
     </div>
 </x-app-layout>
+<!-- Small Modal -->
+<div id="small-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 dark:border-gray-600">
+                <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+                    Hasil BMI
+                </h3>
+                <button data-modal-target="small-modal" data-modal-toggle="small-modal" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="small-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-4 md:p-5 space-y-4">
+                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                    Nilai BMI and adalah:
+                </p>
+                <h3 class="text-4xl font-semibold text-biru" id="hasil_bmi">23.45</h3>
+                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                    Dengan Kategori <span class="font-bold text-biru" id="kategori_bmi"></span>
+                </p>
+            </div>
+            {{-- <!-- Modal footer -->
+            <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                <button data-modal-hide="small-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
+                <button data-modal-hide="small-modal" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
+            </div> --}}
+        </div>
+    </div>
+</div>
