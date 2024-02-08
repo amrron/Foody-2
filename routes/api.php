@@ -26,7 +26,6 @@ use App\Http\Controllers\EmailVerificationController;
 // });
 
 Route::middleware(['auth:sanctum', 'email_verified'])->group(function() {
-    Route::get("/users/profile", [UserController::class, 'profile']);
 //     Route::get("/users/summary", [UserController::class, 'summary']);
     Route::post("/users/logout", [UserController::class, 'logout']);
     Route::put("/users/update", [UserController::class, 'update']);
@@ -51,6 +50,7 @@ Route::middleware(['auth:sanctum', 'email_verified'])->group(function() {
 });
 
 Route::middleware(['auth:sanctum'])->group(function() {
+    Route::get("/users/profile", [UserController::class, 'profile']);
     Route::post('/email-verification', [EmailVerificationController::class, 'email_verification']);
     Route::post('/resend-otp', [EmailVerificationController::class, 'resend_otp']);
 });

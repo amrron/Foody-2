@@ -20,18 +20,19 @@ class EmailVerificationController extends Controller
     public function email_verification(EmailVerificationRequest $request) {
         $user = auth()->user();
         $otp2 = $this->otp->validate($user->email, $request->otp);
-        if($otp2->status == 'error'){
+        if(!$otp2->status){
             return response()->json($otp2, 401);
         }
-       
-        if ($request->user()->markEmailAsVerified()) {
-            event(new Verified($request->user()));
+        else {
+            if ($request->user()->markEmailAsVerified()) {
+                event(new Verified($request->user()));
+            }
+    
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Email berhasil diverifikasi'
+            ], 201);
         }
-
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Email berhasil diverifikasi'
-        ], 201);
     }
 
     public function resend_otp() {
