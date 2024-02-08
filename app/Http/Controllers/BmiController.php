@@ -151,19 +151,7 @@ class BmiController extends Controller
             ],
         ];
 
-        $setup = [
-            "type" => "line",
-            "data" => $data,
-            "options" => [
-                "responsive" => true,
-                "maintainAspectRatio" => false,
-                "plugins" => ["legend" => ["position" => "top"]],
-                "scales" => ["x" => ["display" => false]],
-            ],
-        ];
-
-        $link = "https://quickchart.io/chart?v=4&bkg=rgb(217, 244, 255)&f=svg&c=" . json_encode($setup);
-        return $link;
+        return response()->json($data);
     }
 
     public function input(BmiRequest $request){
@@ -202,7 +190,7 @@ class BmiController extends Controller
         return response()->json([
             'status' => "success",
             'data' => $bmis,
-            'message' => $this->chart()
+            'message' => $this->apichart()
         ], 201);
     }
 
@@ -267,13 +255,17 @@ class BmiController extends Controller
         }
         $value = $nilai;
 
+        $labels2 = [];
+        foreach($labels as $lab) {
+            array_push($labels2, date('Y-m-d', strtotime($lab)));
+        }
 
         $data = [
-            'labels' => $labels,
+            'labels' => $labels2,
             'datasets' => [
                 [
                     'label' => 'Nilai BMI',
-                    'borderColor' => '#17184f',
+                    'borderColor' => 'rgba(23, 24, 79)',
                     'backgroundColor' => 'rgba(255, 255, 255)',
                     'data' => $value,
                     'type' => 'line',
@@ -352,16 +344,10 @@ class BmiController extends Controller
                 "maintainAspectRatio" => false,
                 "plugins" => ["legend" => ["position" => "top"]],
                 "scales" => ["x" => ["display" => false]],
-            ],
+            ]
         ];
 
         $link = "https://quickchart.io/chart?v=4&bkg=rgb(217, 244, 255)&f=svg&c=" . json_encode($setup);
-        // return response()->json([
-        //     'status' => 'success',
-        //     'data' => [
-        //         'link' => $link
-        //     ]
-        // ], 201);
         return $link;
     }
 
