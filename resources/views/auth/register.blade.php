@@ -56,7 +56,8 @@
                 <option value="1.2">Tidak aktif (tidak berolahraga sama sekali)</option>
                 <option value="1.375">Cukup aktif (berolahraga 1-3x seminggu)</option>
                 <option value="1.55">Aktif (berolahraga 3-5x seminggu)</option>
-                <option value="1.725">Sangat aktif (berolahraga atau 6-7x seminggu)</option>
+                <option value="1.725">Sangat aktif (berolahraga 6-7x seminggu)</option>
+                <option value="1.9">Super aktif (berolahraga 1-2x setiap hari)</option>
             </select>
             <x-input-error :messages="$errors->get('aktivitas')" class="mt-2" />
         </div>

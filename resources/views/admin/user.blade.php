@@ -12,7 +12,7 @@
             </button>
         </form>
     </div>
-    <div class="relative overflow-x-scroll shadow-md sm:rounded-lg">
+    <div class="relative overflow-x-scroll shadow-md sm:rounded-lg mb-3">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -38,7 +38,7 @@
             </thead>
             <tbody>
                 @php
-                    $i = 1;
+                    $i = $users->firstItem();
                 @endphp
                 @foreach ($users as $user)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -46,7 +46,7 @@
                         {{ $i }}
                     </th>
                     <td class="px-6 py-4 flex justify-center">
-                        <img src="{{ isset($user->gambar) ? "/storage/" . $user->gambar : "/assets/img/profileimg.webp"}}" alt="" class="w-8 rounded-full">
+                        <img src="{{ $user->gambar ?? "/assets/img/profileimg.webp"}}" alt="" class="w-8 rounded-full">
                     </td>
                     <th class="px-6 py-4">
                         {{ $user->name }}
@@ -77,4 +77,5 @@
             </tbody>
         </table>
     </div>
+    {{ $users->links() }}
 </x-admin-layout>

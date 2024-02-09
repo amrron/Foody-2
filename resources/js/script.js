@@ -292,13 +292,28 @@ $(document).ready(function(){
             });
         });
     });
+
+    $('#btn-add-makanan').click(function(){
+        $('#input-id-makanan').val("");
+        $('#nama').val("");
+        $('#deskripsi').val("");
+        $('#old_gambar').val("");
+        $('#karbohidrat').val("");
+        $('#protein').val("");
+        $('#gula').val("");
+        $('#garam').val("");
+        $('#lemak').val("");
+        $('#previewImage').attr('src', "");
+        $('#previewImage').addClass("hidden");
+        $('#submit-makanan').text('+ Tambah Makanan')
+    });
     
     $('.edit-makanan').click(function(e){
         e.preventDefault();
 
         $('#judul-modal').text('Edit data makanan');
         $('#ganti-gambar').removeClass('hidden');
-        $('#submit-makanan').text('Ubah makanan')
+        $('#submit-makanan').text('Ubah makanan');
 
         var getUrl = "/admin/makanan/" + $(this).attr('data-id');
 

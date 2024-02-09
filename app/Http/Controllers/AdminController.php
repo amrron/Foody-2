@@ -9,14 +9,14 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function indexUser() {
-        $users = User::filter(request(['search']))->get();
+        $users = User::filter(request(['search']))->paginate(12);
         return view('admin.user', [
             'users' => $users,
         ]);
     }
 
     public function indexMakanan() {
-        $makanan = Makanan::filter(request(['search']))->get();
+        $makanan = Makanan::filter(request(['search']))->paginate(12);
         return view('admin.makanan', [
             'makanans' => $makanan,
         ]);

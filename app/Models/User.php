@@ -129,11 +129,15 @@ class User extends Authenticatable implements MustVerifyEmail
         
         // Kebutuhan Kalori Laki-laki : (88,4 + 13,4 x berat dalam kilogram) + (4,8 x tinggi dalam sentimeter) - (5,68 x usia dalam tahun)
         // Kebutuhan Kalori Perempuan : (447,6 + 9,25 x berat dalam kilogram) + (3,10 x tinggi dalam sentimeter) - (4,33 x usia dalam tahun)
+        // For men, the formula is: BMR = 66.5 + (13.75 × weight in kg) + (5.003 × height in cm) - (6.75 × age)
+        // For women, it's: BMR = 655.1 + (9.563 × weight in kg) + (1.850 × height in cm) - (4.676 × age)
         $kebutuhankalori = 0;
         if ($this->jenis_kelamin == "Laki-laki"){
-            $kebutuhankalori = (88.4 + 13.4 * $this->beratBadan) + (4.8 * $this->tinggiBadan) - (5.68 * $this->usia);
+            // $kebutuhankalori = (88.4 + 13.4 * $this->beratBadan) + (4.8 * $this->tinggiBadan) - (5.68 * $this->usia);
+            $kebutuhankalori = 66.5 + (13.7 * $this->beratBadan) + (5.003 * $this->tinggiBadan) - (6.75 * $this->usia);
         } else {
-            $kebutuhankalori = (447.6 + 9.25 * $this->beratBadan) + (3.10 * $this->tinggiBadan) - (4.33 * $this->usia);
+            // $kebutuhankalori = (447.6 + 9.25 * $this->beratBadan) + (3.10 * $this->tinggiBadan) - (4.33 * $this->usia);
+            $kebutuhankalori = 655.1 + (9.563 * $this->beratBadan) + (1.850 + $this->tinggiBadan) - (4.676 * $this->usia);
         }
 
         $kebutuhankalori *= $aktivitas;

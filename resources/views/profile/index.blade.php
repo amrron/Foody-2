@@ -11,7 +11,7 @@
                     <div class="photo col-span-1 sm:col-span-1 flex flex-col items-center">
                         <div class="photo-profile text-center">
                             <div class="relative" title="Ubah foto profile">
-                                <img src="{{ isset($user->gambar) ? $user->gambar : "/assets/img/profileimg.webp"}}" class="aspect-square object-cover w-[150px] rounded-full" alt="">
+                                <img src="{{ $user->gambar ?? "/assets/img/profileimg.webp"}}" class="aspect-square object-cover w-[150px] rounded-full" alt="">
                                 <button class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-black w-full h-full rounded-full opacity-0 hover:opacity-50 flex justify-center items-center" data-dropdown-toggle="edit-profile">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 13 14" fill="none">
                                         <path
@@ -176,7 +176,9 @@
             <p class="text-biru font-bold">1.55</p>
             <p class="text-biru">Aktif (berolahraga 3-5x seminggu)</p>
             <p class="text-biru font-bold">1.725</p>
-            <p class="text-biru">Sangat aktif (berolahraga atau 6-7x seminggu)</p>
+            <p class="text-biru">Sangat aktif (berolahraga 6-7x seminggu)</p>
+            <p class="text-biru font-bold">1.725</p>
+            <p class="text-biru">Super aktif (berolahraga 1-2x setiap hari)</p>
         </div>
     </div>
     <div data-popper-arrow></div>

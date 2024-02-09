@@ -12,11 +12,11 @@
             </button>
         </form>
     </div>
-    <button data-modal-target="modal-add-makanan" data-modal-toggle="modal-add-makanan" type="button" class="text-white inline-flex items-center bg-biru hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+    <button data-modal-target="modal-add-makanan" data-modal-toggle="modal-add-makanan" type="button" id="btn-add-makanan" class="text-white inline-flex items-center bg-biru hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mb-3">
         <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
         Tambah makanan baru
     </button>
-    <div class="relative overflow-x-scroll shadow-md sm:rounded-lg">
+    <div class="relative overflow-x-scroll shadow-md sm:rounded-lg mb-3">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -39,7 +39,7 @@
             </thead>
             <tbody>
                 @php
-                    $i = 1;
+                    $i = $makanans->firstItem();
                 @endphp
                 @foreach ($makanans as $makanan)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -69,6 +69,7 @@
             </tbody>
         </table>
     </div>
+    {{ $makanans->links() }}
 </x-admin-layout>
 <!-- Main modal -->
 <div id="modal-add-makanan" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-screen max-h-screen" style="background-color: rgba(17,24,39,.5);}">
@@ -121,17 +122,30 @@
                         <textarea id="deskripsi" name="deskripsi" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan deskripsi makanan"></textarea>                    
                     </div>
                     <div class="col-span-2">
-                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kandungan makanan</label>
+                        <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kandungan makanan</label>
+                        <label for="karbohidrat" class="block mb-2 text-sm text-gray-900 dark:text-white">Karbohidrat</label>
                         <input type="text" name="karbohidrat" id="karbohidrat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Karbohidrat (g)" required="">
                         <div class="grid grid-cols-2 mt-3 gap-3">
-                            <input type="text" name="protein" id="protein" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Protein (g)" required="">
-                            <input type="text" name="garam" id="garam" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Garam (g)" required="">
-                            <input type="text" name="gula" id="gula" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Gula (g)" required="">
-                            <input type="text" name="lemak" id="lemak" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Lemak (g)" required="">    
+                            <div class="">
+                                <label for="protein" class="block mb-2 text-sm text-gray-900 dark:text-white">Protein</label>
+                                <input type="text" name="protein" id="protein" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Protein (g)" required="">
+                            </div>
+                            <div class="">
+                                <label for="garam" class="block mb-2 text-sm text-gray-900 dark:text-white">Garam</label>
+                                <input type="text" name="garam" id="garam" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Garam (g)" required="">
+                            </div>
+                            <div class="">
+                                <label for="gula" class="block mb-2 text-sm text-gray-900 dark:text-white">Gula</label>
+                                <input type="text" name="gula" id="gula" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Gula (g)" required="">
+                            </div>
+                            <div class="">
+                                <label for="lemak" class="block mb-2 text-sm text-gray-900 dark:text-white">Lemak</label>
+                                <input type="text" name="lemak" id="lemak" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Lemak (g)" required="">    
+                            </div>
                         </div>                    
                     </div>
                 </div>
-                <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="submit-makanan">
+                <button type="submit" class="text-white inline-flex items-center bg-biru hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="submit-makanan">
                     <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
                     Tambah makanan
                 </button>

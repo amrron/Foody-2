@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Buat laporan makanan yang telah anda konsumsi. Pilih tanggal mulai dan tanggl selsai atau kosongkan keduan jika ingin mengambil semua data.') }}
+            {{ __('Buat laporan makanan yang telah anda konsumsi. Pilih tanggal mulai dan tanggal selsai atau kosongkan keduanya jika ingin mengambil semua data.') }}
         </p>
 
         <form action="/profile/report" method="post" class="mt-6">  
