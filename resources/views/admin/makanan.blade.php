@@ -65,11 +65,15 @@
                     $i++
                 @endphp
                 @endforeach
-                
+                @if ($makanans->count() < 1)
+                    <tr>
+                        <td colspan="5" class="text-center">Tidak ditemukan</td>
+                    </tr>
+                @endif
             </tbody>
         </table>
     </div>
-    {{ $makanans->links() }}
+    {{ $makanans->appends(['search' => request()->get('search')])->links() }}
 </x-admin-layout>
 <!-- Main modal -->
 <div id="modal-add-makanan" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-screen max-h-screen" style="background-color: rgba(17,24,39,.5);}">

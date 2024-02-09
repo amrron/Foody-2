@@ -138,7 +138,7 @@
                                         <p class="text-biru">{{ auth()->user()->dailyGula }}/{{ auth()->user()->batasGula }}g</p>
                                     </div>
                                     <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
-                                        <div class="bg-black text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ auth()->user()->dailyGula / auth()->user()->batasGula * 100 }}%"> {{ auth()->user()->dailyGula / auth()->user()->batasGula * 100 }}%</div>
+                                        <div class="bg-black text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ auth()->user()->dailyGula / auth()->user()->batasGula * 100 }}%"> {{ round(auth()->user()->dailyGula / auth()->user()->batasGula * 100) }}%</div>
                                     </div>
                                 </div>
                                 <div class="mb-3">

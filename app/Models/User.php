@@ -156,11 +156,52 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function getBatasGaramAttribute() {
-        return 5;
+        $batas = 5;
+        $usia = $this->usia;
+
+        if($usia < 1){
+            $batas = 1;
+        } 
+        if ($usia >= 1 && $usia <= 3){
+            $batas = 2;
+        }
+        if ($usia >= 4 && $usia <= 6){
+            $batas = 3;
+        }
+        if ($usia >= 7 && $usia <= 10){
+            $batas = 5;
+        } 
+        if ($usia > 10) {
+            $batas = 5;
+        }
+
+        return $batas;
     }
 
     public function getBatasGulaAttribute() {
-        return 50;
+        $batas = 50;
+        $usia = $this->usia;
+
+        if($usia < 1){
+            $batas = 1;
+        } 
+        if ($usia >= 1 && $usia <= 3){
+            $batas = 25;
+        }
+        if ($usia >= 4 && $usia <= 6){
+            $batas = 19;
+        }
+        if ($usia >= 7 && $usia <= 10){
+            $batas = 24;
+        } 
+        if ($usia >= 11 && $usia <= 18) {
+            $batas = 30;
+        }
+        if ($usia > 18) {
+            $batas = 50;
+        }
+
+        return $batas;
     }
 
     public function getBatasLemakAttribute() {

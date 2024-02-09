@@ -73,9 +73,13 @@
                     $i++
                 @endphp
                 @endforeach
-                
+                @if ($users->count() < 1)
+                <tr>
+                    <td colspan="6" class="text-center">Tidak ditemukan</td>
+                </tr>
+            @endif
             </tbody>
         </table>
     </div>
-    {{ $users->links() }}
+    {{ $users->appends(['search' => request()->get('search')])->links() }}
 </x-admin-layout>

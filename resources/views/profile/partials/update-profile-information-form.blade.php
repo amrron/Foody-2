@@ -69,7 +69,8 @@
                 <option value="1.2" {{ $user->aktivitas == 1.2 ? "selected" : "" }}>Tidak aktif (tidak berolahraga sama sekali)</option>
                 <option value="1.375" {{ $user->aktivitas == 1.375 ? "selected" : "" }}>Cukup aktif (berolahraga 1-3x seminggu)</option>
                 <option value="1.55" {{ $user->aktivitas == 1.55 ? "selected" : "" }}>Aktif (berolahraga 3-5x seminggu)</option>
-                <option value="1.725" {{ $user->aktivitas == 1.725 ? "selected" : "" }}>Sangat aktif (berolahraga atau 6-7x seminggu)</option>
+                <option value="1.725" {{ $user->aktivitas == 1.725 ? "selected" : "" }}>Sangat aktif (berolahraga 6-7x seminggu)</option>
+                <option value="1.9" {{ $user->aktivitas == 1.9 ? "selected" : "" }}>Super aktif (berolahraga 1-2x setiap hari)</option>
             </select>
             <x-input-error :messages="$errors->get('aktivitas')" class="mt-2" />
         </div>

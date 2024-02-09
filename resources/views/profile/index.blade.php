@@ -146,7 +146,7 @@
                                     <p class="text-biru">{{ $user->dailyGula }}/{{ $user->batasGula }} g</p>
                                 </div>
                                 <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
-                                    <div class="bg-black text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ $user->dailyGula / $user->batasGula * 100 }}%"> {{ $user->dailyGula / $user->batasGula * 100 }}%</div>
+                                    <div class="bg-black text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ $user->dailyGula / $user->batasGula * 100 }}%"> {{ round($user->dailyGula / $user->batasGula * 100) }}%</div>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -177,7 +177,7 @@
             <p class="text-biru">Aktif (berolahraga 3-5x seminggu)</p>
             <p class="text-biru font-bold">1.725</p>
             <p class="text-biru">Sangat aktif (berolahraga 6-7x seminggu)</p>
-            <p class="text-biru font-bold">1.725</p>
+            <p class="text-biru font-bold">1.9</p>
             <p class="text-biru">Super aktif (berolahraga 1-2x setiap hari)</p>
         </div>
     </div>

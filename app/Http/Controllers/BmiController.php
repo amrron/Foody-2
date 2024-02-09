@@ -74,9 +74,13 @@ class BmiController extends Controller
         }
         $value = $nilai;
 
+        $labels2 = [];
+        foreach($labels as $lab) {
+            array_push($labels2, date('Y-m-d', strtotime($lab)));
+        }
 
         $data = [
-            'labels' => $labels,
+            'labels' => $labels2,
             'datasets' => [
                 [
                     'label' => 'Nilai BMI',
