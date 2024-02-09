@@ -72,7 +72,7 @@ class ProfileController extends Controller
         ]);
 
         if($request->file('gambar')){
-            $validated['gambar'] = $request->file('gambar')->store('upload');
+            $validated['gambar'] = env('APP_URL') . '/storage/' . $request->file('gambar')->store('upload');
             if($request->old_gambar){
                 Storage::delete($request->old_gambar);
             }
@@ -104,7 +104,7 @@ class ProfileController extends Controller
         ]);
 
         if($request->file('gambar')){
-            $validated['gambar'] = $request->file('gambar')->store('upload');
+            $validated['gambar'] = env('APP_URL') . '/storage/' . $request->file('gambar')->store('upload');
             if($request->old_gambar){
                 Storage::delete($request->old_gambar);
             }
