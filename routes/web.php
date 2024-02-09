@@ -65,9 +65,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
-    Route::get('/admin', function(){
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/admin', [AdminController::class, 'indexDashboard'])->name('admin.dashboard');
 
     Route::get('/admin/user', [AdminController::class, 'indexUser'])->name('admin.user');
     Route::get('/admin/makanan', [AdminController::class, 'indexMakanan'])->name('admin.makanan');

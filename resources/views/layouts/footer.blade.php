@@ -9,10 +9,10 @@
                 <div class="footer-quicklinks">
                     <h5 class="text-biru text-lg font-bold">Quicklinks</h5>
                     <ul class="list-none">
-                        <li><a href="/" class="text-biru hover:text-white">Home</a></li>
+                        <li><a href="/home" class="text-biru hover:text-white">Home</a></li>
                         <li><a href="/catatanku" class="text-biru hover:text-white">Catatanku</a></li>
                         <li><a href="/bmi" class="text-biru hover:text-white">BMI</a></li>
-                        <li><a href="/#contact-us" class="text-biru hover:text-white">Contact Us</a></li>
+                        <li><a href="/makanan" class="text-biru hover:text-white">Makanan</a></li>
                     </ul>
                 </div>
                 <div class="footer-contactus">

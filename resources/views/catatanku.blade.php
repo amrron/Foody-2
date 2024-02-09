@@ -120,7 +120,7 @@
                                         <p class="text-biru">{{ auth()->user()->dailyProtein }}/{{ auth()->user()->batasProtein }}g</p>
                                     </div>
                                     <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700 overflow-hidden">
-                                        <div class="bg-birumuda text-xs font-medium text-birumuda text-center p-0.5 leading-none rounded-full" style="width: {{ round(auth()->user()->dailyProtein / auth()->user()->batasProtein * 100) }}%"> {{ round(auth()->user()->dailyProtein / auth()->user()->batasProtein * 100) }}%</div>
+                                        <div class="bg-birumuda text-xs font-medium text-biru text-center p-0.5 leading-none rounded-full" style="width: {{ round(auth()->user()->dailyProtein / auth()->user()->batasProtein * 100) }}%"> {{ round(auth()->user()->dailyProtein / auth()->user()->batasProtein * 100) }}%</div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
