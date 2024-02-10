@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\BmiController;
-use App\Http\Controllers\CatatanMakananController;
-use App\Http\Controllers\MakananController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
 use App\Models\CatatanMakanan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BmiController;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MakananController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CatatanMakananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +29,9 @@ Route::get('/success-verify', function(){
     return view('auth.success-verify');
 })->name('succes_verify');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/download', function(){
+    return response()->download(public_path("/app/Foody.apk"));
+});
 
 Route::middleware(['auth', 'verified'])->group(function () {
 

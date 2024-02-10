@@ -54,7 +54,7 @@
         <div class="flex w-full flex-col md:flex-row">
             <div class="flex flex-col justify-center">
                 <h1 class="text-5xl font-bold text-biru w-full">Temukan Data Makanan Dengn Foody AI</h1>
-                <p class="text-base text-biru mb-3">Cari makanan ada lalu Foody AI akan mencari data makanan anda secara lengkap</p>
+                <p class="text-base text-biru mb-3">Masukan nama makanan, lalu AI akan membantuk mencari data makanan.</p>
                 <a href="/makanan" class="w-20 bg-birumuda text-biru hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none dark:focus:ring-blue-800">Try It</a>
             </div>
             <div class="w-full p-5 flex items-center justify-center">
@@ -139,11 +139,15 @@
                     <h1 class="text-xl text-biru font-medium md:text-3xl">Download Sekarang Juga!</h1>
                     <p class="text-sm md:text-base text-biru mt-3">Dapatkan aplikasi foody untuk perangkat android sekarang juga</p>
                     <div class="flex mt-4">
-                        <div class="bg-putih rounded-md p-2 me-3">
-                            <img src="/assets/img/LOGO.png" alt="">
+                        <div class="rounded-md p-2">
+                            {{-- <img src="/assets/img/LOGO.png" alt=""> --}}
+                            <svg class="w-16 h-16 text-biru dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M13 11.1V4a1 1 0 1 0-2 0v7.1L8.8 8.4a1 1 0 1 0-1.6 1.2l4 5a1 1 0 0 0 1.6 0l4-5a1 1 0 1 0-1.6-1.2L13 11Z" clip-rule="evenodd"/>
+                                <path fill-rule="evenodd" d="M9.7 15.9 7.4 13H5a2 2 0 0 0-2 2v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2.4l-2.3 2.9a3 3 0 0 1-4.6 0Zm7.3.1a1 1 0 1 0 0 2 1 1 0 1 0 0-2Z" clip-rule="evenodd"/>
+                            </svg>                            
                         </div>
-                        <a href="/downloads" class="flex items-center text-biru text-5xl font-bold">
-                            Foody
+                        <a href="/download" class="flex items-center text-biru text-5xl font-bold">
+                            Foody.apk
                         </a>
                     </div>
                 </div>
